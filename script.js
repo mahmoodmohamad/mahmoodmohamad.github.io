@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeContactForm();
     initializeActiveNavLinks();
     initializeSmoothScroll();
+    initializeProjectFilters();
 });
 
 // ========================================
@@ -219,7 +220,7 @@ function initializeScrollAnimations() {
     );
 
     animateElements.forEach((el, index) => {
-        el.style.opacity = '0';
+        // Keep elements visible by default
         el.style.animationDelay = `${index * 0.1}s`;
         observer.observe(el);
     });
