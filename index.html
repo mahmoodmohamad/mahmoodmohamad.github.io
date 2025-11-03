@@ -432,6 +432,133 @@
         </div>
     </section>
 
+<!-- Projects Section -->
+<section id="projects" class="relative py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-950 to-slate-900">
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-20">
+      <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">
+        Featured <span class="text-emerald-400">Projects</span>
+      </h2>
+      <p class="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed">
+        Real-world solutions crafted with modern web technologies — designed for performance, scalability, and impact.
+      </p>
+      <div class="w-24 h-1 bg-emerald-500 mx-auto mt-6 rounded-full"></div>
+    </div>
+
+    <!-- Project Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <!-- Reusable Card Component -->
+      <article class="group relative bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-emerald-500/10 transition duration-300 hover:-translate-y-1">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=800&fit=crop"
+               alt="Library Management"
+               class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute top-4 right-4">
+            <span class="px-4 py-2 bg-emerald-500 text-white text-sm font-bold rounded-lg">Library</span>
+          </div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-white mb-3">Advanced Laravel CMS — Koha ILS Integration</h3>
+          <p class="text-slate-300 mb-5 leading-relaxed text-base">
+            A complete library management platform built with Laravel 11, integrated with Koha’s REST API — enabling catalog control, circulation, patron sync, and powerful analytics.
+          </p>
+          <ul class="text-slate-400 text-sm mb-6 list-disc ml-5 space-y-1">
+            <li>MARC21 ingestion, bulk import/export</li>
+            <li>Circulation, reservations, notifications</li>
+            <li>Patron sync, roles, and card management</li>
+            <li>Interactive analytics dashboards</li>
+          </ul>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-emerald-400 rounded-lg">Laravel 11</span>
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-emerald-400 rounded-lg">Koha API</span>
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-emerald-400 rounded-lg">MARC21</span>
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-emerald-400 rounded-lg">Redis</span>
+          </div>
+          <div class="flex gap-5">
+            <a href="#" class="flex items-center gap-2 text-slate-400 hover:text-emerald-400 font-bold transition">
+              <i data-lucide="github" class="w-5 h-5"></i> Code
+            </a>
+            <a href="#" class="flex items-center gap-2 text-slate-400 hover:text-emerald-400 font-bold transition">
+              <i data-lucide="external-link" class="w-5 h-5"></i> Demo
+            </a>
+            <a href="#" class="flex items-center gap-2 text-slate-400 hover:text-emerald-400 font-bold transition">
+              <i data-lucide="file-text" class="w-5 h-5"></i> Docs
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Example: E-Commerce -->
+      <article class="group relative bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-sky-500/10 transition duration-300 hover:-translate-y-1">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop" 
+               alt="E-Commerce"
+               class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute top-4 right-4">
+            <span class="px-4 py-2 bg-sky-500 text-white text-sm font-bold rounded-lg">Production</span>
+          </div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-white mb-3">E-Commerce Platform</h3>
+          <p class="text-slate-300 mb-5 leading-relaxed text-base">
+            A scalable, full-featured eCommerce system with payment gateway, product management, order tracking, and a custom analytics dashboard.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-sky-400 rounded-lg">Laravel</span>
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-sky-400 rounded-lg">Livewire</span>
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-sky-400 rounded-lg">Stripe</span>
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-sky-400 rounded-lg">PostgreSQL</span>
+          </div>
+          <div class="flex gap-5">
+            <a href="#" class="flex items-center gap-2 text-slate-400 hover:text-sky-400 font-bold transition">
+              <i data-lucide="github" class="w-5 h-5"></i> Code
+            </a>
+            <a href="#" class="flex items-center gap-2 text-slate-400 hover:text-sky-400 font-bold transition">
+              <i data-lucide="external-link" class="w-5 h-5"></i> Demo
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Example: Digital Library -->
+      <article class="group relative bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-sky-400/10 transition duration-300 hover:-translate-y-1">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&h=600&fit=crop" 
+               alt="Digital Library"
+               class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute top-4 right-4">
+            <span class="px-4 py-2 bg-sky-500 text-white text-sm font-bold rounded-lg">Educational</span>
+          </div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-white mb-3">E-Lending Book Library</h3>
+          <p class="text-slate-300 mb-5 leading-relaxed text-base">
+            A digital book lending system supporting catalog browsing, borrow/return tracking, and real-time availability.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-sky-400 rounded-lg">Laravel</span>
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-sky-400 rounded-lg">MySQL</span>
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-sky-400 rounded-lg">PDF Reader</span>
+            <span class="tech-tag bg-slate-800 px-3 py-1.5 text-sm font-semibold text-sky-400 rounded-lg">AJAX</span>
+          </div>
+          <div class="flex gap-5">
+            <a href="#" class="flex items-center gap-2 text-slate-400 hover:text-sky-400 font-bold transition">
+              <i data-lucide="github" class="w-5 h-5"></i> Code
+            </a>
+            <a href="#" class="flex items-center gap-2 text-slate-400 hover:text-sky-400 font-bold transition">
+              <i data-lucide="external-link" class="w-5 h-5"></i> Demo
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Decorative Glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-500/10 blur-3xl rounded-full"></div>
+</section>
 
 
     <!-- Skills Section -->
