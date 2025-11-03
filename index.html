@@ -353,26 +353,312 @@
             <div class="section-header text-center">
                 <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
                 <p class="section-description">
-                    Real-world solutions crafted with modern web technologies
+                    Real-world solutions crafted with modern web technologies — Laravel, Vanilla JavaScript, and pure PHP power
                 </p>
                 <div class="section-divider mx-auto"></div>
             </div>
 
-            <div class="projects-grid">
-                <!-- Project Card -->
-                <article class="project-card">
+            <!-- Project Filter Tabs -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i data-lucide="grid" class="w-5 h-5"></i>
+                    <span>All Projects</span>
+                </button>
+                <button class="filter-btn" data-filter="library">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                    <span>Library Systems</span>
+                </button>
+                <button class="filter-btn" data-filter="healthcare">
+                    <i data-lucide="heart-pulse" class="w-5 h-5"></i>
+                    <span>Healthcare</span>
+                </button>
+                <button class="filter-btn" data-filter="ecommerce">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                    <span>E-Commerce</span>
+                </button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                
+                <!-- E-Lending Library System -->
+                <article class="project-card" data-category="library">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1200&h=800&fit=crop" 
+                             alt="E-Lending Library System" 
+                             class="project-image">
+                        <div class="project-badge bg-indigo-500">Library</div>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <i data-lucide="book" class="w-5 h-5"></i>
+                                    <span>1000+ Books</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="users" class="w-5 h-5"></i>
+                                    <span>Multi-User</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="search" class="w-5 h-5"></i>
+                                    <span>Advanced Search</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">E-Lending Library System</h3>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <p class="project-description">
+                            Comprehensive digital lending platform with automated borrowing management, real-time availability tracking, 
+                            and advanced search capabilities across 1,000+ digital resources.
+                        </p>
+                        <ul class="project-features">
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Automated borrowing & returns system</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Real-time book availability tracking</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> User preference & history management</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Advanced filtering by genre & author</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Laravel 11</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Bootstrap 5</span>
+                            <span class="tech-tag">PDF.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" aria-label="View source code">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                                <span>Source Code</span>
+                            </a>
+                            <a href="#" class="project-link" aria-label="View live demo">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                                <span>Live Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hospital Management System -->
+                <article class="project-card" data-category="healthcare">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&h=800&fit=crop" 
+                             alt="Hospital Management System" 
+                             class="project-image">
+                        <div class="project-badge bg-rose-500">Healthcare</div>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <i data-lucide="activity" class="w-5 h-5"></i>
+                                    <span>Real-time Analytics</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="shield" class="w-5 h-5"></i>
+                                    <span>HIPAA Compliant</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="database" class="w-5 h-5"></i>
+                                    <span>Inventory Control</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Hospital Management System</h3>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <p class="project-description">
+                            Complete healthcare solution managing hospital operations from patient records to billing, 
+                            inventory control, and real-time analytics dashboards for efficient healthcare delivery.
+                        </p>
+                        <ul class="project-features">
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Patient management & medical history</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Billing & insurance claim processing</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Medicine inventory with auto-alerts</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Doctor portal for prescriptions & tests</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Laravel 11</span>
+                            <span class="tech-tag">Livewire</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" aria-label="View source code">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                                <span>Source Code</span>
+                            </a>
+                            <a href="#" class="project-link" aria-label="View live demo">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                                <span>Live Demo</span>
+                            </a>
+                            <a href="#" class="project-link" aria-label="View documentation">
+                                <i data-lucide="file-text" class="w-5 h-5"></i>
+                                <span>Documentation</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Koha Management Frontend -->
+                <article class="project-card" data-category="library">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&h=800&fit=crop" 
+                             alt="Koha Management System" 
+                             class="project-image">
+                        <div class="project-badge bg-sky-500">Library System</div>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <i data-lucide="plug" class="w-5 h-5"></i>
+                                    <span>REST API</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                                    <span>Custom Dashboard</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="zap" class="w-5 h-5"></i>
+                                    <span>Real-time Sync</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Koha ILS Management Frontend</h3>
+                            <span class="project-year">2023</span>
+                        </div>
+                        <p class="project-description">
+                            Modern Laravel-based frontend application interfacing with Koha ILS REST API, providing 
+                            enhanced user experience and custom administrative tools for library management.
+                        </p>
+                        <ul class="project-features">
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Full Koha REST API integration</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Custom cataloging interface</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Patron management & circulation</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Advanced reporting & analytics</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Koha REST API</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">MARC21</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" aria-label="View source code">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                                <span>Source Code</span>
+                            </a>
+                            <a href="#" class="project-link" aria-label="View live demo">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                                <span>Live Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- E-Commerce Platform -->
+                <article class="project-card" data-category="ecommerce">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=800&fit=crop" 
+                             alt="E-Commerce Platform" 
+                             class="project-image">
+                        <div class="project-badge bg-purple-500">E-Commerce</div>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <i data-lucide="credit-card" class="w-5 h-5"></i>
+                                    <span>Payment Gateway</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="package" class="w-5 h-5"></i>
+                                    <span>Order Tracking</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="trending-up" class="w-5 h-5"></i>
+                                    <span>Sales Analytics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Full-Stack E-Commerce Platform</h3>
+                            <span class="project-year">2023</span>
+                        </div>
+                        <p class="project-description">
+                            Complete e-commerce solution with product management, shopping cart, payment integration, 
+                            and comprehensive order tracking system built entirely with Laravel and vanilla JavaScript.
+                        </p>
+                        <ul class="project-features">
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Product catalog with advanced filters</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Secure payment gateway integration</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Real-time order tracking system</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Customer account & wishlist</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Stripe API</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" aria-label="View source code">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                                <span>Source Code</span>
+                            </a>
+                            <a href="#" class="project-link" aria-label="View live demo">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                                <span>Live Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Digital Book Platform -->
+                <article class="project-card" data-category="library">
                     <div class="project-image-container">
                         <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&h=800&fit=crop" 
                              alt="Digital Book Platform" 
                              class="project-image">
                         <div class="project-badge bg-emerald-500">Library</div>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                                    <span>Free Access</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="filter" class="w-5 h-5"></i>
+                                    <span>Genre Filtering</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="bookmark" class="w-5 h-5"></i>
+                                    <span>Bookmarking</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Digital Book Platform</h3>
+                        <div class="project-header">
+                            <h3 class="project-title">Digital Book Platform</h3>
+                            <span class="project-year">2022</span>
+                        </div>
                         <p class="project-description">
-                            A comprehensive digital library system providing free access to over 1,000 books 
-                            with robust search functionality.
+                            Free digital library platform providing access to 1,000+ books across various genres 
+                            with intuitive search, user-friendly interface, and efficient content management.
                         </p>
+                        <ul class="project-features">
+                            <li><i data-lucide="check" class="w-4 h-4"></i> 1,000+ books across multiple genres</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Fast search & discovery features</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> User bookmarking & reading lists</li>
+                            <li><i data-lucide="check" class="w-4 h-4"></i> Admin content management system</li>
+                        </ul>
                         <div class="tech-tags">
                             <span class="tech-tag">Laravel</span>
                             <span class="tech-tag">MySQL</span>
@@ -380,19 +666,58 @@
                             <span class="tech-tag">Bootstrap</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
+                            <a href="#" class="project-link" aria-label="View source code">
                                 <i data-lucide="github" class="w-5 h-5"></i>
-                                <span>Code</span>
+                                <span>Source Code</span>
                             </a>
-                            <a href="#" class="project-link">
+                            <a href="#" class="project-link" aria-label="View live demo">
                                 <i data-lucide="external-link" class="w-5 h-5"></i>
-                                <span>Demo</span>
+                                <span>Live Demo</span>
                             </a>
                         </div>
                     </div>
                 </article>
-                
-                <!-- More project cards would follow -->
+
+            </div>
+
+            <!-- Project Stats -->
+            <div class="project-stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon bg-sky-500">
+                        <i data-lucide="code" class="w-8 h-8"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 class="stat-number">5+</h4>
+                        <p class="stat-label">Major Projects</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-emerald-500">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 class="stat-number">100K+</h4>
+                        <p class="stat-label">Active Users</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-purple-500">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 class="stat-number">99.9%</h4>
+                        <p class="stat-label">Uptime Rate</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-rose-500">
+                        <i data-lucide="award" class="w-8 h-8"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 class="stat-number">5</h4>
+                        <p class="stat-label">Years Experience</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
