@@ -1325,7 +1325,8 @@ textarea.form-input {
 
 /* Slide up animation */
 .slide-up {
-    animation: slideUp 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 1 !important; /* Override the opacity set by JS */
 }
 
 @keyframes slideUp {
@@ -1337,6 +1338,15 @@ textarea.form-input {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Elements that will be animated should start visible */
+.info-card,
+.timeline-item,
+.project-card,
+.skill-category-card {
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
 /* ========================================
