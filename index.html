@@ -365,7 +365,121 @@
                             </div>
                         </div>
                     </article>
-                    
+                    <!-- Digital Library System Project Card -->
+<article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden hover:border-sky-500 transition-all hover:scale-105" data-category="library">
+    <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center relative overflow-hidden">
+        <!-- Animated background pattern -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-4 left-4 w-12 h-12 border-2 border-white rounded-lg animate-pulse"></div>
+            <div class="absolute bottom-4 right-4 w-16 h-16 border-2 border-white rounded-lg animate-pulse delay-150"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 border-2 border-white rounded-lg animate-pulse delay-300"></div>
+        </div>
+        
+        <!-- Main Icon -->
+        <svg class="w-20 h-20 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
+        </svg>
+    </div>
+    
+    <div class="p-6">
+        <!-- Header -->
+        <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold text-white">Digital Library Management System</h3>
+            <span class="px-3 py-1 bg-emerald-500/20 border border-emerald-500 rounded-lg text-emerald-400 text-sm font-bold whitespace-nowrap ml-2">2024</span>
+        </div>
+        
+        <!-- Description -->
+        <p class="text-slate-400 mb-4 leading-relaxed">
+            Comprehensive digital library platform with advanced cataloging, multi-user access control, and integrated OPAC (Online Public Access Catalog). Features include barcode scanning, overdue notifications, and detailed analytics dashboard.
+        </p>
+        
+        <!-- Key Features -->
+        <div class="mb-4 p-3 bg-emerald-500/5 rounded-lg border-l-3 border-emerald-500">
+            <h4 class="text-emerald-400 font-bold text-sm mb-2 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                Key Features
+            </h4>
+            <ul class="space-y-1 text-slate-400 text-sm">
+                <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 mt-0.5">✓</span>
+                    <span>Advanced cataloging with MARC21 & Dublin Core metadata</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 mt-0.5">✓</span>
+                    <span>Multi-level user access (Admin, Librarian, Member)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 mt-0.5">✓</span>
+                    <span>Automated circulation with email/SMS notifications</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 mt-0.5">✓</span>
+                    <span>Digital asset management (PDF, ePub, Audio)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 mt-0.5">✓</span>
+                    <span>Real-time analytics & reporting dashboard</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 mt-0.5">✓</span>
+                    <span>Barcode/QR code scanning for quick checkouts</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Statistics -->
+        <div class="grid grid-cols-3 gap-2 mb-4">
+            <div class="bg-slate-900/50 rounded-lg p-2 text-center border border-slate-700">
+                <div class="text-emerald-400 font-black text-lg">50K+</div>
+                <div class="text-slate-500 text-xs font-semibold">Resources</div>
+            </div>
+            <div class="bg-slate-900/50 rounded-lg p-2 text-center border border-slate-700">
+                <div class="text-emerald-400 font-black text-lg">10K+</div>
+                <div class="text-slate-500 text-xs font-semibold">Active Users</div>
+            </div>
+            <div class="bg-slate-900/50 rounded-lg p-2 text-center border border-slate-700">
+                <div class="text-emerald-400 font-black text-lg">99.8%</div>
+                <div class="text-slate-500 text-xs font-semibold">Uptime</div>
+            </div>
+        </div>
+        
+        <!-- Tech Stack -->
+        <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">Laravel 11</span>
+            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">MySQL</span>
+            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">Vue.js</span>
+            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">Redis</span>
+            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">Elasticsearch</span>
+            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">WebSockets</span>
+        </div>
+        
+        <!-- Links -->
+        <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-700">
+            <a href="#" class="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-all hover:scale-105 text-sm font-semibold">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <span>Source Code</span>
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-all hover:scale-105 text-sm font-semibold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+                <span>Live Demo</span>
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-all hover:scale-105 text-sm font-semibold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                <span>Documentation</span>
+            </a>
+        </div>
+    </div>
+</article>
+
+
                 </div>
             </div>
         </section>
