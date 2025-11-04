@@ -589,3 +589,56 @@ console.log(
 
 // If you're using ES6 modules, you can export these functions
 // export { initializeNavigation, initializeParticles, initializeContactForm };
+function initializeProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+            
+            // Update active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Filter projects
+            projects.forEach(project => {
+                const category = project.dataset.category;
+                if (filter === 'all' || category === filter) {
+                    project.classList.remove('hidden');
+                    project.style.animation = 'scaleIn 0.5s ease';
+                } else {
+                    project.classList.add('hidden');
+                }
+            });
+        });
+    });
+}
+
+const projectImages = document.querySelectorAll('.project-image');
+projectImages.forEach(img => {
+    img.loading = 'lazy'; // Native lazy loading
+});
+
+
+if (window.innerWidth < 768) {
+    // Reduce particle count
+    const particleCount = Math.floor((canvas.width * canvas.height) / 30000);
+}
+async function submitContactForm(formData) {
+    try {
+        const response = await fetch('https://formspree.io/f/YOUR_ID', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        if (response.ok) {
+            showFormStatus('Message sent successfully!', 'success');
+        }
+    } catch (error) {
+        showFormStatus('Failed to send message', 'error');
+    }
+}
