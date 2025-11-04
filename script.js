@@ -19,7 +19,64 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeActiveNavLinks();
     initializeSmoothScroll();
     initializeProjectFilters();
+    initializeLazyLoading();
+    initializeKeyboardNavigation();
+    initializePageLoader();
+    initializeThemeToggle();
 });
+
+// ========================================
+// PAGE LOADER
+// ========================================
+
+function initializePageLoader() {
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('pageLoader');
+        if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }
+    });
+}
+
+// ========================================
+// THEME TOGGLE
+// ========================================
+
+function initializeThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+
+    const body = document.body;
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        updateThemeIcon(true);
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        const isLight = body.classList.contains('light-mode');
+        
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        updateThemeIcon(isLight);
+    });
+    
+    function updateThemeIcon(isLight) {
+        const icon = themeToggle.querySelector('svg');
+        if (!icon) return;
+        
+        if (isLight) {
+            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>';
+        } else {
+            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>';
+        }
+    }
+}
 
 // ========================================
 // LUCIDE ICONS INITIALIZATION
@@ -38,8 +95,11 @@ function initializeLucideIcons() {
 function initializeNavigation() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    const mobileLinks = mobileMenu.querySelectorAll('a');
     const nav = document.getElementById('mainNav');
+
+    if (!mobileMenuBtn || !mobileMenu || !nav) return;
+
+    const mobileLinks = mobileMenu.querySelectorAll('a');
 
     // Mobile menu toggle
     mobileMenuBtn.addEventListener('click', () => {
@@ -68,16 +128,17 @@ function initializeNavigation() {
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-            mobileMenu.classList.remove('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.setAttribute('data-lucide', 'menu');
-            initializeLucideIcons();
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                initializeLucideIcons();
+            }
         }
     });
 
     // Navbar scroll effect
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', throttle(() => {
         const currentScroll = window.pageYOffset;
 
         if (currentScroll > 100) {
@@ -85,9 +146,7 @@ function initializeNavigation() {
         } else {
             nav.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
-    });
+    }, 100));
 }
 
 // ========================================
@@ -109,7 +168,10 @@ function initializeParticles() {
     }
 
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        createParticles();
+    });
 
     // Particle class
     class Particle {
@@ -141,9 +203,10 @@ function initializeParticles() {
         }
     }
 
-    // Create particles
+    // Create particles (reduce count on mobile)
     function createParticles() {
-        const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+        const divisor = window.innerWidth < 768 ? 30000 : 15000;
+        const particleCount = Math.floor((canvas.width * canvas.height) / divisor);
         particles = [];
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
@@ -151,7 +214,6 @@ function initializeParticles() {
     }
 
     createParticles();
-    window.addEventListener('resize', createParticles);
 
     // Animation loop
     function animate() {
@@ -162,23 +224,25 @@ function initializeParticles() {
             particle.draw();
         });
 
-        // Draw connections
-        particles.forEach((particleA, indexA) => {
-            particles.slice(indexA + 1).forEach(particleB => {
-                const dx = particleA.x - particleB.x;
-                const dy = particleA.y - particleB.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+        // Draw connections (skip on mobile for performance)
+        if (window.innerWidth >= 768) {
+            particles.forEach((particleA, indexA) => {
+                particles.slice(indexA + 1).forEach(particleB => {
+                    const dx = particleA.x - particleB.x;
+                    const dy = particleA.y - particleB.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance < 120) {
-                    ctx.strokeStyle = `rgba(14, 165, 233, ${0.15 * (1 - distance / 120)})`;
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.moveTo(particleA.x, particleA.y);
-                    ctx.lineTo(particleB.x, particleB.y);
-                    ctx.stroke();
-                }
+                    if (distance < 120) {
+                        ctx.strokeStyle = `rgba(14, 165, 233, ${0.15 * (1 - distance / 120)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particleA.x, particleA.y);
+                        ctx.lineTo(particleB.x, particleB.y);
+                        ctx.stroke();
+                    }
+                });
             });
-        });
+        }
 
         animationFrameId = requestAnimationFrame(animate);
     }
@@ -192,6 +256,43 @@ function initializeParticles() {
         } else {
             animate();
         }
+    });
+}
+
+// ========================================
+// PROJECT FILTERS
+// ========================================
+
+function initializeProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project-card');
+    
+    if (filterBtns.length === 0 || projects.length === 0) return;
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+            
+            // Update active state
+            filterBtns.forEach(b => {
+                b.classList.remove('active', 'bg-gradient-to-r', 'from-sky-500', 'to-emerald-500', 'text-white');
+                b.classList.add('bg-slate-800', 'border-2', 'border-slate-700', 'text-slate-400');
+            });
+            
+            btn.classList.remove('bg-slate-800', 'border-2', 'border-slate-700', 'text-slate-400');
+            btn.classList.add('active', 'bg-gradient-to-r', 'from-sky-500', 'to-emerald-500', 'text-white');
+            
+            // Filter projects
+            projects.forEach(project => {
+                const category = project.dataset.category;
+                if (filter === 'all' || category === filter) {
+                    project.classList.remove('filter-hidden', 'hidden');
+                    project.style.animation = 'scaleIn 0.5s ease';
+                } else {
+                    project.classList.add('filter-hidden', 'hidden');
+                }
+            });
+        });
     });
 }
 
@@ -220,7 +321,6 @@ function initializeScrollAnimations() {
     );
 
     animateElements.forEach((el, index) => {
-        // Keep elements visible by default
         el.style.animationDelay = `${index * 0.1}s`;
         observer.observe(el);
     });
@@ -266,6 +366,8 @@ function initializeSkillBars() {
 function initializeActiveNavLinks() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    if (sections.length === 0 || navLinks.length === 0) return;
 
     function updateActiveLink() {
         let currentSection = '';
@@ -352,33 +454,40 @@ function initializeContactForm() {
             return;
         }
 
-        // Simulate form submission (replace with actual API call)
         try {
             // Disable form during submission
             const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
+            const originalHTML = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span>Sending...</span>';
 
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Replace with your actual endpoint
+            // Option 1: Formspree
+            // const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
 
-            // Here you would normally send the data to your backend
+            // Option 2: Your Laravel API
             // const response = await fetch('/api/contact', {
             //     method: 'POST',
             //     headers: { 'Content-Type': 'application/json' },
             //     body: JSON.stringify(formData)
             // });
 
+            // Simulate API call for now
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
             showFormStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
             form.reset();
 
             // Re-enable form
             submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-            initializeLucideIcons();
+            submitBtn.innerHTML = originalHTML;
 
         } catch (error) {
+            console.error('Form submission error:', error);
             showFormStatus('Something went wrong. Please try again later.', 'error');
             const submitBtn = form.querySelector('button[type="submit"]');
             submitBtn.disabled = false;
@@ -388,25 +497,16 @@ function initializeContactForm() {
 
 function showFormStatus(message, type) {
     const formStatus = document.getElementById('formStatus');
-    const icon = formStatus.querySelector('i');
-    const text = formStatus.querySelector('p');
+    if (!formStatus) return;
 
+    formStatus.textContent = message;
     formStatus.classList.remove('hidden');
-    text.textContent = message;
 
     if (type === 'success') {
-        formStatus.style.background = 'rgba(16, 185, 129, 0.1)';
-        formStatus.style.borderColor = '#10b981';
-        formStatus.style.color = '#10b981';
-        icon.setAttribute('data-lucide', 'check-circle');
+        formStatus.className = 'mt-6 p-4 rounded-xl border-2 bg-emerald-500/10 border-emerald-500 text-emerald-400 font-bold';
     } else {
-        formStatus.style.background = 'rgba(239, 68, 68, 0.1)';
-        formStatus.style.borderColor = '#ef4444';
-        formStatus.style.color = '#ef4444';
-        icon.setAttribute('data-lucide', 'alert-circle');
+        formStatus.className = 'mt-6 p-4 rounded-xl border-2 bg-rose-500/10 border-rose-500 text-rose-400 font-bold';
     }
-
-    initializeLucideIcons();
 
     // Auto-hide after 5 seconds
     setTimeout(() => {
@@ -420,43 +520,22 @@ function isValidEmail(email) {
 }
 
 // ========================================
-// UTILITY FUNCTIONS
+// LAZY LOADING
 // ========================================
 
-// Debounce function to limit function calls
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Throttle function for scroll events
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-// ========================================
-// PERFORMANCE OPTIMIZATIONS
-// ========================================
-
-// Lazy load images
 function initializeLazyLoading() {
     const images = document.querySelectorAll('img[data-src]');
+    
+    if (images.length === 0) {
+        // If no data-src, add native lazy loading to all images
+        const allImages = document.querySelectorAll('img');
+        allImages.forEach(img => {
+            if (!img.loading) {
+                img.loading = 'lazy';
+            }
+        });
+        return;
+    }
     
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -472,22 +551,6 @@ function initializeLazyLoading() {
     images.forEach(img => imageObserver.observe(img));
 }
 
-// Preload critical resources
-function preloadCriticalResources() {
-    const criticalImages = [
-        'https://images.unsplash.com/photo-1481627834876-b7833e8f5570',
-        'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f'
-    ];
-
-    criticalImages.forEach(src => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = src;
-        document.head.appendChild(link);
-    });
-}
-
 // ========================================
 // KEYBOARD NAVIGATION
 // ========================================
@@ -499,11 +562,13 @@ function initializeKeyboardNavigation() {
             const mobileMenu = document.getElementById('mobileMenu');
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             
-            if (mobileMenu.classList.contains('active')) {
+            if (mobileMenu && mobileMenuBtn && mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
                 const icon = mobileMenuBtn.querySelector('i');
-                icon.setAttribute('data-lucide', 'menu');
-                initializeLucideIcons();
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'menu');
+                    initializeLucideIcons();
+                }
             }
         }
     });
@@ -521,33 +586,63 @@ function initializeKeyboardNavigation() {
 }
 
 // ========================================
+// UTILITY FUNCTIONS
+// ========================================
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// ========================================
 // ANALYTICS (Optional)
 // ========================================
 
 function trackEvent(category, action, label) {
-    // Implement your analytics tracking here
-    // Example with Google Analytics:
-    // if (typeof gtag !== 'undefined') {
-    //     gtag('event', action, {
-    //         'event_category': category,
-    //         'event_label': label
-    //     });
-    // }
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+            'event_category': category,
+            'event_label': label
+        });
+    }
     
     console.log('Event tracked:', { category, action, label });
 }
 
-// Track important interactions
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', () => {
-        trackEvent('Navigation', 'Click', link.getAttribute('href'));
-    });
-});
-
-document.querySelectorAll('.project-link').forEach(link => {
-    link.addEventListener('click', () => {
-        trackEvent('Project', 'View', link.closest('.project-card')?.querySelector('.project-title')?.textContent);
-    });
+// Track navigation clicks
+document.addEventListener('click', (e) => {
+    const navLink = e.target.closest('a[href^="#"]');
+    if (navLink) {
+        trackEvent('Navigation', 'Click', navLink.getAttribute('href'));
+    }
+    
+    const projectLink = e.target.closest('.project-link');
+    if (projectLink) {
+        const projectCard = projectLink.closest('.project-card');
+        const projectTitle = projectCard?.querySelector('.project-title')?.textContent;
+        if (projectTitle) {
+            trackEvent('Project', 'View', projectTitle);
+        }
+    }
 });
 
 // ========================================
@@ -556,12 +651,10 @@ document.querySelectorAll('.project-link').forEach(link => {
 
 window.addEventListener('error', (e) => {
     console.error('Global error:', e.error);
-    // You can send error reports to your logging service here
 });
 
 window.addEventListener('unhandledrejection', (e) => {
     console.error('Unhandled promise rejection:', e.reason);
-    // You can send error reports to your logging service here
 });
 
 // ========================================
@@ -579,66 +672,6 @@ console.log(
 );
 
 console.log(
-    '%c📧 mahmood@example.com',
+    '%c📧 mamod.mohamed@gmail.com',
     'font-size: 12px; color: #94a3b8;'
 );
-
-// ========================================
-// EXPORT FUNCTIONS (if using modules)
-// ========================================
-
-// If you're using ES6 modules, you can export these functions
-// export { initializeNavigation, initializeParticles, initializeContactForm };
-function initializeProjectFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projects = document.querySelectorAll('.project-card');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const filter = btn.dataset.filter;
-            
-            // Update active state
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Filter projects
-            projects.forEach(project => {
-                const category = project.dataset.category;
-                if (filter === 'all' || category === filter) {
-                    project.classList.remove('hidden');
-                    project.style.animation = 'scaleIn 0.5s ease';
-                } else {
-                    project.classList.add('hidden');
-                }
-            });
-        });
-    });
-}
-
-const projectImages = document.querySelectorAll('.project-image');
-projectImages.forEach(img => {
-    img.loading = 'lazy'; // Native lazy loading
-});
-
-
-if (window.innerWidth < 768) {
-    // Reduce particle count
-    const particleCount = Math.floor((canvas.width * canvas.height) / 30000);
-}
-async function submitContactForm(formData) {
-    try {
-        const response = await fetch('https://formspree.io/f/YOUR_ID', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-        
-        if (response.ok) {
-            showFormStatus('Message sent successfully!', 'success');
-        }
-    } catch (error) {
-        showFormStatus('Failed to send message', 'error');
-    }
-}
