@@ -3,205 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>Mahmood Mohamad | Senior Laravel Full-Stack Developer</title>
-    <meta name="title" content="Mahmood Mohamad - Senior Laravel Developer">
-    <meta name="description" content="5+ years Laravel expertise in web applications, RESTful APIs, and library management systems. Specialized in Koha ILS, VuFind, and enterprise solutions.">
-    <meta name="keywords" content="Laravel Developer, PHP Developer, Full-Stack Developer, Koha ILS, Library Systems, RESTful API, Web Development">
-    <meta name="author" content="Mahmood Mohamad">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mahmoodmohamad.dev/">
-    <meta property="og:title" content="Mahmood Mohamad - Senior Laravel Developer">
-    <meta property="og:description" content="5+ years Laravel expertise in web applications, RESTful APIs, and library management systems.">
-    <meta property="og:image" content="https://mahmoodmohamad.dev/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://mahmoodmohamad.dev/">
-    <meta property="twitter:title" content="Mahmood Mohamad - Senior Laravel Developer">
-    <meta property="twitter:description" content="5+ years Laravel expertise in web applications, RESTful APIs, and library management systems.">
-    <meta property="twitter:image" content="https://mahmoodmohamad.dev/og-image.jpg">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Mahmood Mohamad",
-      "jobTitle": "Senior Laravel Full-Stack Developer",
-      "url": "https://mahmoodmohamad.dev",
-      "sameAs": [
-        "https://github.com/mahmoodmohamad",
-        "https://linkedin.com/in/mahmoudmehidy"
-      ],
-      "knowsAbout": ["Laravel", "PHP", "JavaScript", "MySQL", "Koha ILS", "RESTful APIs"]
-    }
-    </script>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
+    <title>Mahmood Mohamad - Senior Laravel Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <style>
-    /* Loader Styles */
-    #pageLoader {
-        position: fixed;
-        inset: 0;
-        background: #020617;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.5s ease;
-    }
-    
-    .loader {
-        width: 50px;
-        aspect-ratio: 1;
-        border-radius: 50%;
-        border: 8px solid #0ea5e9;
-        border-right-color: transparent;
-        animation: spin 1s infinite linear;
-    }
-    
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-    
-    /* Theme Toggle Button */
-    #themeToggle {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 56px;
-        height: 56px;
-        background: linear-gradient(135deg, #0ea5e9, #10b981);
-        border-radius: 50%;
-        box-shadow: 0 8px 24px rgba(14, 165, 233, 0.4);
-        cursor: pointer;
-        z-index: 40;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        border: none;
-    }
-    
-    #themeToggle:hover {
-        transform: scale(1.1) rotate(180deg);
-        box-shadow: 0 12px 32px rgba(14, 165, 233, 0.6);
-    }
-    
-    /* Light Mode Styles */
-    body.light-mode {
-        background: #f1f5f9;
-        color: #1e293b;
-    }
-    
-    body.light-mode .bg-slate-950 {
-        background: #ffffff;
-    }
-    
-    body.light-mode .text-slate-100 {
-        color: #1e293b;
-    }
-    
-    /* Base Styles from original CSS */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-    }
-    
-    :root {
-        --color-primary: #0ea5e9;
-        --color-secondary: #10b981;
-        --color-accent: #8b5cf6;
-    }
-    
-    body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    
-    /* Animations */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(40px);
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
-    }
-    
-    @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-    
-    @keyframes pulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(1.2); }
-    }
-    
-    .hero-content {
-        animation: fadeInUp 1s ease forwards;
-    }
-    
-    .status-badge {
-        animation: float 3s ease-in-out infinite;
-    }
-    
-    .status-dot {
-        width: 8px;
-        height: 8px;
-        background: #10b981;
-        border-radius: 50%;
-        animation: pulse 2s ease-in-out infinite;
-    }
-    
-    /* Project cards hidden state for filtering */
-    .project-card.filter-hidden {
-        display: none;
-    }
-    
-    .project-card {
-        animation: scaleIn 0.5s ease;
-    }
-    
-    @keyframes scaleIn {
-        from {
-            opacity: 0;
-            transform: scale(0.9);
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        to {
-            opacity: 1;
-            transform: scale(1);
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
-    }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #0ea5e9, #10b981);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: #0ea5e9;
+            border-radius: 50%;
+            border: 4px solid #1e293b;
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            width: 2px;
+            height: calc(100% - 16px);
+            background: #334155;
+        }
+        
+        .timeline-item:last-child:after {
+            display: none;
+        }
+        
+        nav {
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 overflow-x-hidden">
-    
-    <!-- Page Loader -->
-    <div id="pageLoader">
-        <div class="loader"></div>
+<body class="smooth-scroll">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b-2 border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-black text-white">MM<span class="gradient-text">.</span></a>
+                <div class="hidden md:flex gap-8">
+                    <a href="#home" class="text-slate-400 hover:text-white font-bold transition-colors">Home</a>
+                    <a href="#about" class="text-slate-400 hover:text-white font-bold transition-colors">About</a>
+                    <a href="#experience" class="text-slate-400 hover:text-white font-bold transition-colors">Experience</a>
+                    <a href="#projects" class="text-slate-400 hover:text-white font-bold transition-colors">Projects</a>
+                    <a href="#skills" class="text-slate-400 hover:text-white font-bold transition-colors">Skills</a>
+                    <a href="#contact" class="text-slate-400 hover:text-white font-bold transition-colors">Contact</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-slate-900 z-40 hidden">
+        <div class="flex flex-col items-center justify-center h-full gap-8">
+            <a href="#home" class="text-2xl text-white font-bold mobile-menu-link">Home</a>
+            <a href="#about" class="text-2xl text-white font-bold mobile-menu-link">About</a>
+            <a href="#experience" class="text-2xl text-white font-bold mobile-menu-link">Experience</a>
+            <a href="#projects" class="text-2xl text-white font-bold mobile-menu-link">Projects</a>
+            <a href="#skills" class="text-2xl text-white font-bold mobile-menu-link">Skills</a>
+            <a href="#contact" class="text-2xl text-white font-bold mobile-menu-link">Contact</a>
+        </div>
     </div>
-    
+
     <!-- Main Content -->
-    <div class="min-h-screen">
+    <div class="min-h-screen pt-20">
         <!-- Hero Section -->
         <section id="home" class="min-h-screen flex items-center justify-center px-4 relative">
             <div class="max-w-4xl mx-auto text-center relative z-10">
@@ -215,23 +160,38 @@
                     <!-- Main Heading -->
                     <h1 class="text-5xl md:text-7xl font-black mb-6 text-white">
                         Hi, I'm<br/>
-                        <span class="bg-gradient-to-r from-sky-500 to-emerald-500 bg-clip-text text-transparent">
-                            Mahmood Mohamad
-                        </span>
+                        <span class="gradient-text">Mahmood Mohamad</span>
                     </h1>
                     
                     <!-- Subtitle -->
                     <div class="flex items-center justify-center gap-4 mb-6">
                         <div class="w-20 h-1 bg-gradient-to-r from-sky-500 to-transparent rounded-full"></div>
                         <h2 class="text-2xl md:text-3xl font-bold text-slate-400">Senior Laravel Full-Stack Developer</h2>
+                        <div class="w-20 h-1 bg-gradient-to-l from-emerald-500 to-transparent rounded-full"></div>
                     </div>
                     
                     <!-- Description -->
                     <p class="text-lg md:text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
-                        Crafting robust web applications with <span class="text-white font-bold">5+ years</span> of expertise. 
+                        Crafting scalable web applications with <span class="text-white font-bold">6+ years</span> of expertise. 
                         Specialized in Laravel, RESTful APIs, and library management systems including 
                         <span class="text-emerald-400 font-bold">Koha ILS</span>.
                     </p>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+                        <div class="bg-slate-800/50 border-2 border-slate-700 rounded-xl p-4">
+                            <div class="text-3xl font-black gradient-text">6+</div>
+                            <div class="text-slate-400 text-sm font-semibold">Years Experience</div>
+                        </div>
+                        <div class="bg-slate-800/50 border-2 border-slate-700 rounded-xl p-4">
+                            <div class="text-3xl font-black gradient-text">25+</div>
+                            <div class="text-slate-400 text-sm font-semibold">Projects Delivered</div>
+                        </div>
+                        <div class="bg-slate-800/50 border-2 border-slate-700 rounded-xl p-4">
+                            <div class="text-3xl font-black gradient-text">500+</div>
+                            <div class="text-slate-400 text-sm font-semibold">Daily Active Users</div>
+                        </div>
+                    </div>
                     
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -259,105 +219,292 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 px-4">
-            <div class="max-w-7xl mx-auto">
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-4 bg-slate-900/30">
+            <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl md:text-6xl font-black text-white mb-4">
-                        Featured <span class="bg-gradient-to-r from-sky-500 to-emerald-500 bg-clip-text text-transparent">Projects</span>
+                        About <span class="gradient-text">Me</span>
                     </h2>
-                    <p class="text-xl text-slate-400">Real-world solutions crafted with modern web technologies</p>
                     <div class="w-32 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full mx-auto mt-6"></div>
                 </div>
                 
-                <!-- Project Filters -->
-                <div class="flex flex-wrap justify-center gap-4 mb-12">
-                    <button class="filter-btn active px-6 py-3 bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-bold rounded-xl transition-all" data-filter="all">
-                        All Projects
-                    </button>
-                    <button class="filter-btn px-6 py-3 bg-slate-800 border-2 border-slate-700 text-slate-400 font-bold rounded-xl hover:border-sky-500 transition-all" data-filter="library">
-                        Library Systems
-                    </button>
-                    <button class="filter-btn px-6 py-3 bg-slate-800 border-2 border-slate-700 text-slate-400 font-bold rounded-xl hover:border-sky-500 transition-all" data-filter="healthcare">
-                        Healthcare
-                    </button>
-                    <button class="filter-btn px-6 py-3 bg-slate-800 border-2 border-slate-700 text-slate-400 font-bold rounded-xl hover:border-sky-500 transition-all" data-filter="ecommerce">
-                        E-Commerce
-                    </button>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-8">
+                        <h3 class="text-2xl font-black text-white mb-4">Professional Journey</h3>
+                        <p class="text-slate-400 mb-4 leading-relaxed">
+                            With over 6 years of experience in web development, I specialize in building robust, scalable web applications using Laravel and modern web technologies. My journey started in technical support, which gave me a deep understanding of user needs and system architecture.
+                        </p>
+                        <p class="text-slate-400 mb-4 leading-relaxed">
+                            Currently at Progress-IT, I've developed and maintained 15+ web applications serving 500+ daily active users. My work focuses on library management systems, healthcare solutions, and enterprise applications.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed">
+                            I'm passionate about optimizing performance, improving user experience, and delivering solutions that make a real impact. My technical support background helps me build systems that are not just functional, but truly user-friendly.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="w-12 h-12 bg-sky-500 rounded-xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-black text-white">40%</div>
+                                    <div class="text-slate-400 text-sm font-semibold">Performance Improvement</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 text-sm">Optimized database queries and caching strategies</p>
+                        </div>
+                        
+                        <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-black text-white">30%</div>
+                                    <div class="text-slate-400 text-sm font-semibold">User Satisfaction Increase</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 text-sm">Through feature development and UX improvements</p>
+                        </div>
+                        
+                        <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-black text-white">60%</div>
+                                    <div class="text-slate-400 text-sm font-semibold">Deployment Time Reduction</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 text-sm">Automated CI/CD pipeline implementation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section id="experience" class="py-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-4">
+                        Professional <span class="gradient-text">Experience</span>
+                    </h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full mx-auto mt-6"></div>
+                </div>
+                
+                <div class="relative">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item">
+                        <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                            <div class="flex flex-wrap justify-between items-start mb-3">
+                                <div>
+                                    <h3 class="text-xl font-black text-white">PHP Laravel Developer</h3>
+                                    <div class="text-sky-400 font-bold">Progress-IT</div>
+                                </div>
+                                <span class="px-3 py-1 bg-emerald-500/20 border border-emerald-500 rounded-lg text-emerald-400 text-sm font-bold">March 2022 - Present</span>
+                            </div>
+                            <ul class="space-y-2 text-slate-400">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-emerald-400 mt-1">▸</span>
+                                    <span>Developed and maintained 15+ web applications using Laravel Framework, serving 500+ daily active users</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-emerald-400 mt-1">▸</span>
+                                    <span>Optimized MySQL queries and caching, achieving 40% faster response times</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-emerald-400 mt-1">▸</span>
+                                    <span>Engineered comprehensive library portal integrated with Koha ILS for 1,000+ registered users</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-emerald-400 mt-1">▸</span>
+                                    <span>Automated CI/CD pipeline using GitLab, reducing deployment time from 2 hours to 15 minutes</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item">
+                        <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                            <div class="flex flex-wrap justify-between items-start mb-3">
+                                <div>
+                                    <h3 class="text-xl font-black text-white">PHP Web Developer</h3>
+                                    <div class="text-sky-400 font-bold">Almandumah, Riyadh</div>
+                                </div>
+                                <span class="px-3 py-1 bg-sky-500/20 border border-sky-500 rounded-lg text-sky-400 text-sm font-bold">Aug 2017 - May 2021</span>
+                            </div>
+                            <ul class="space-y-2 text-slate-400">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-sky-400 mt-1">▸</span>
+                                    <span>Developed 10+ web applications supporting 2,000+ users in educational institutions</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-sky-400 mt-1">▸</span>
+                                    <span>Designed user feedback system collecting 500+ monthly responses, improving satisfaction by 25%</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-sky-400 mt-1">▸</span>
+                                    <span>Created automated content management tools reducing manual tasks by 50%</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-sky-400 mt-1">▸</span>
+                                    <span>Maintained 99% uptime across 5 critical web application platforms</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item">
+                        <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                            <div class="flex flex-wrap justify-between items-start mb-3">
+                                <div>
+                                    <h3 class="text-xl font-black text-white">Technical Support (Koha ILS)</h3>
+                                    <div class="text-sky-400 font-bold">Almandumah, Riyadh</div>
+                                </div>
+                                <span class="px-3 py-1 bg-purple-500/20 border border-purple-500 rounded-lg text-purple-400 text-sm font-bold">July 2009 - Aug 2017</span>
+                            </div>
+                            <ul class="space-y-2 text-slate-400">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-purple-400 mt-1">▸</span>
+                                    <span>Provided technical support for Koha open-source library system, serving 50+ library staff</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-purple-400 mt-1">▸</span>
+                                    <span>Managed technical operations for 10+ libraries with 50,000+ combined items</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-purple-400 mt-1">▸</span>
+                                    <span>Delivered comprehensive training to 100+ library staff members</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4 bg-slate-900/30">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-4">
+                        Featured <span class="gradient-text">Projects</span>
+                    </h2>
+                    <p class="text-xl text-slate-400">Real-world solutions from my professional experience</p>
+                    <div class="w-32 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full mx-auto mt-6"></div>
                 </div>
                 
                 <!-- Projects Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <!-- Project Card 1 -->
-                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden hover:border-sky-500 transition-all hover:scale-105" data-category="library">
-                        <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <!-- Pharmacy Management System -->
+                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
                         </div>
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-3">
-                                <h3 class="text-xl font-bold text-white">E-Lending Library System</h3>
-                                <span class="px-3 py-1 bg-indigo-500/20 border border-indigo-500 rounded-lg text-indigo-400 text-sm font-bold">2022</span>
+                                <h3 class="text-xl font-bold text-white">Pharmacy Management System</h3>
+                                <span class="px-3 py-1 bg-rose-500/20 border border-rose-500 rounded-lg text-rose-400 text-sm font-bold">2025</span>
                             </div>
-                            <p class="text-slate-400 mb-4">Comprehensive digital lending platform with automated borrowing management and real-time tracking.</p>
+                            <p class="text-slate-400 mb-4">Complete pharmacy management system handling inventory tracking for 500+ medications and 200+ daily transactions with automated alerts.</p>
+                            <div class="mb-4">
+                                <div class="text-xs text-slate-500 font-semibold mb-2">KEY ACHIEVEMENTS:</div>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• Reduced stockout incidents by 45%</li>
+                                    <li>• Streamlined pharmacist workflow by 30%</li>
+                                    <li>• Prescription management module</li>
+                                </ul>
+                            </div>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Laravel 11</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Laravel 9</span>
                                 <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">MySQL</span>
                                 <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">JavaScript</span>
                             </div>
                         </div>
                     </article>
                     
-                    <!-- Project Card 2 -->
-                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden hover:border-sky-500 transition-all hover:scale-105" data-category="healthcare">
-                        <div class="h-48 bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center">
+                    <!-- Hospital Management System -->
+                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                             <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                         </div>
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-3">
                                 <h3 class="text-xl font-bold text-white">Hospital Management System</h3>
-                                <span class="px-3 py-1 bg-rose-500/20 border border-rose-500 rounded-lg text-rose-400 text-sm font-bold">2023</span>
+                                <span class="px-3 py-1 bg-indigo-500/20 border border-indigo-500 rounded-lg text-indigo-400 text-sm font-bold">2024</span>
                             </div>
-                            <p class="text-slate-400 mb-4">Complete healthcare solution managing hospital operations from patient records to billing.</p>
+                            <p class="text-slate-400 mb-4">Comprehensive hospital management system serving 500+ patients daily with patient registration, appointment scheduling, and billing modules.</p>
+                            <div class="mb-4">
+                                <div class="text-xs text-slate-500 font-semibold mb-2">KEY ACHIEVEMENTS:</div>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• 10,000+ patient records managed</li>
+                                    <li>• 40% reduction in admin workload</li>
+                                    <li>• Real-time monitoring dashboard</li>
+                                </ul>
+                            </div>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Laravel 11</span>
-                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Livewire</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Laravel 9</span>
                                 <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">MySQL</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">PHP</span>
                             </div>
                         </div>
                     </article>
                     
-                    <!-- Project Card 3 -->
-                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden hover:border-sky-500 transition-all hover:scale-105" data-category="ecommerce">
-                        <div class="h-48 bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
-                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    <!-- Digital Book Platform -->
+                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                         </div>
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-3">
-                                <h3 class="text-xl font-bold text-white">E-Commerce Platform</h3>
-                                <span class="px-3 py-1 bg-purple-500/20 border border-purple-500 rounded-lg text-purple-400 text-sm font-bold">2023</span>
+                                <h3 class="text-xl font-bold text-white">Digital Book Platform</h3>
+                                <span class="px-3 py-1 bg-emerald-500/20 border border-emerald-500 rounded-lg text-emerald-400 text-sm font-bold">2023</span>
                             </div>
-                            <p class="text-slate-400 mb-4">Complete e-commerce solution with product management, shopping cart, and payment integration.</p>
+                            <p class="text-slate-400 mb-4">Digital library platform providing free access to 1,000+ books across 15+ genres with advanced search and filtering functionality.</p>
+                            <div class="mb-4">
+                                <div class="text-xs text-slate-500 font-semibold mb-2">KEY ACHIEVEMENTS:</div>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• 60% faster content location</li>
+                                    <li>• 100+ new titles added monthly</li>
+                                    <li>• Robust CMS for administrators</li>
+                                </ul>
+                            </div>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Laravel</span>
-                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Stripe API</span>
-                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Tailwind</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Laravel 8</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">MySQL</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">JavaScript</span>
                             </div>
                         </div>
                     </article>
                     
-                    <!-- Project Card 4 -->
-                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden hover:border-sky-500 transition-all hover:scale-105" data-category="library">
+                    <!-- Koha ILS Integration -->
+                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden">
                         <div class="h-48 bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center">
                             <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
                         </div>
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-3">
-                                <h3 class="text-xl font-bold text-white">Koha ILS Frontend</h3>
-                                <span class="px-3 py-1 bg-sky-500/20 border border-sky-500 rounded-lg text-sky-400 text-sm font-bold">2023</span>
+                                <h3 class="text-xl font-bold text-white">Koha ILS Integration</h3>
+                                <span class="px-3 py-1 bg-sky-500/20 border border-sky-500 rounded-lg text-sky-400 text-sm font-bold">2022-2024</span>
                             </div>
-                            <p class="text-slate-400 mb-4">Custom Laravel application managing Koha ILS operations through REST API integration.</p>
+                            <p class="text-slate-400 mb-4">Comprehensive library portal integrated with Koha ILS featuring user authentication, real-time search, reservation system for 1,000+ users.</p>
+                            <div class="mb-4">
+                                <div class="text-xs text-slate-500 font-semibold mb-2">KEY ACHIEVEMENTS:</div>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• RESTful API integration</li>
+                                    <li>• Real-time catalog search</li>
+                                    <li>• Account management system</li>
+                                </ul>
+                            </div>
                             <div class="flex flex-wrap gap-2">
                                 <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Laravel</span>
                                 <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">Koha API</span>
@@ -365,127 +512,269 @@
                             </div>
                         </div>
                     </article>
-                    <!-- Digital Library System Project Card -->
-<article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden hover:border-sky-500 transition-all hover:scale-105" data-category="library">
-    <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center relative overflow-hidden">
-        <!-- Animated background pattern -->
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-4 left-4 w-12 h-12 border-2 border-white rounded-lg animate-pulse"></div>
-            <div class="absolute bottom-4 right-4 w-16 h-16 border-2 border-white rounded-lg animate-pulse delay-150"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 border-2 border-white rounded-lg animate-pulse delay-300"></div>
-        </div>
-        
-        <!-- Main Icon -->
-        <svg class="w-20 h-20 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
-        </svg>
-    </div>
-    
-    <div class="p-6">
-        <!-- Header -->
-        <div class="flex justify-between items-start mb-3">
-            <h3 class="text-xl font-bold text-white">Digital Library Management System</h3>
-            <span class="px-3 py-1 bg-emerald-500/20 border border-emerald-500 rounded-lg text-emerald-400 text-sm font-bold whitespace-nowrap ml-2">2022</span>
-        </div>
-        
-        <!-- Description -->
-        <p class="text-slate-400 mb-4 leading-relaxed">
-            Comprehensive digital library platform with advanced cataloging, multi-user access control, and integrated OPAC (Online Public Access Catalog). Features include barcode scanning, overdue notifications, and detailed analytics dashboard.
-        </p>
-        
-        <!-- Key Features -->
-        <div class="mb-4 p-3 bg-emerald-500/5 rounded-lg border-l-3 border-emerald-500">
-            <h4 class="text-emerald-400 font-bold text-sm mb-2 flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                </svg>
-                Key Features
-            </h4>
-            <ul class="space-y-1 text-slate-400 text-sm">
-                <li class="flex items-start gap-2">
-                    <span class="text-emerald-400 mt-0.5">✓</span>
-                    <span>Advanced cataloging with MARC21 & Dublin Core metadata</span>
-                </li>
-                <li class="flex items-start gap-2">
-                    <span class="text-emerald-400 mt-0.5">✓</span>
-                    <span>Multi-level user access (Admin, Librarian, Member)</span>
-                </li>
-                <li class="flex items-start gap-2">
-                    <span class="text-emerald-400 mt-0.5">✓</span>
-                    <span>Automated circulation with email/SMS notifications</span>
-                </li>
-                <li class="flex items-start gap-2">
-                    <span class="text-emerald-400 mt-0.5">✓</span>
-                    <span>Digital asset management (PDF, ePub, Audio)</span>
-                </li>
-                <li class="flex items-start gap-2">
-                    <span class="text-emerald-400 mt-0.5">✓</span>
-                    <span>Real-time analytics & reporting dashboard</span>
-                </li>
-                <li class="flex items-start gap-2">
-                    <span class="text-emerald-400 mt-0.5">✓</span>
-                    <span>Barcode/QR code scanning for quick checkouts</span>
-                </li>
-            </ul>
-        </div>
-        
-        <!-- Statistics -->
-        <div class="grid grid-cols-3 gap-2 mb-4">
-            <div class="bg-slate-900/50 rounded-lg p-2 text-center border border-slate-700">
-                <div class="text-emerald-400 font-black text-lg">50K+</div>
-                <div class="text-slate-500 text-xs font-semibold">Resources</div>
+                    
+                    <!-- E-Learning Platform -->
+                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-white">E-Learning Platform</h3>
+                                <span class="px-3 py-1 bg-amber-500/20 border border-amber-500 rounded-lg text-amber-400 text-sm font-bold">2005</span>
+                            </div>
+                            <p class="text-slate-400 mb-4">Graduation project focusing on delivering educational content and managing online courses efficiently. Foundation of my development career.</p>
+                            <div class="mb-4">
+                                <div class="text-xs text-slate-500 font-semibold mb-2">FEATURES:</div>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• Course management system</li>
+                                    <li>• Student progress tracking</li>
+                                    <li>• Educational content delivery</li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">PHP</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">MySQL</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Library Management System -->
+                    <article class="project-card bg-slate-800 border-2 border-slate-700 rounded-2xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-white">Library Management System</h3>
+                                <span class="px-3 py-1 bg-violet-500/20 border border-violet-500 rounded-lg text-violet-400 text-sm font-bold">2017-2021</span>
+                            </div>
+                            <p class="text-slate-400 mb-4">Multiple library management applications developed for educational institutions with automated content management and user feedback systems.</p>
+                            <div class="mb-4">
+                                <div class="text-xs text-slate-500 font-semibold mb-2">KEY ACHIEVEMENTS:</div>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• 2,000+ active users supported</li>
+                                    <li>• 500+ monthly feedback responses</li>
+                                    <li>• 99% system uptime maintained</li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">PHP</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">MySQL</span>
+                                <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold">HTML/CSS</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
             </div>
-            <div class="bg-slate-900/50 rounded-lg p-2 text-center border border-slate-700">
-                <div class="text-emerald-400 font-black text-lg">10K+</div>
-                <div class="text-slate-500 text-xs font-semibold">Active Users</div>
-            </div>
-            <div class="bg-slate-900/50 rounded-lg p-2 text-center border border-slate-700">
-                <div class="text-emerald-400 font-black text-lg">99.8%</div>
-                <div class="text-slate-500 text-xs font-semibold">Uptime</div>
-            </div>
-        </div>
-        
-        <!-- Tech Stack -->
-        <div class="flex flex-wrap gap-2 mb-4">
-            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">Laravel 11</span>
-            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">MySQL</span>
-            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">Vue.js</span>
-            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">Redis</span>
-            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">Elasticsearch</span>
-            <span class="px-3 py-1 bg-slate-700 text-sky-400 rounded-lg text-xs font-semibold border border-slate-600 hover:border-sky-500 transition-colors">WebSockets</span>
-        </div>
-        
-        <!-- Links -->
-        <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-700">
-            <a href="#" class="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-all hover:scale-105 text-sm font-semibold">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                <span>Source Code</span>
-            </a>
-            <a href="#" class="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-all hover:scale-105 text-sm font-semibold">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                </svg>
-                <span>Live Demo</span>
-            </a>
-            <a href="#" class="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-all hover:scale-105 text-sm font-semibold">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                </svg>
-                <span>Documentation</span>
-            </a>
-        </div>
-    </div>
-</article>
+        </section>
 
-
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-4">
+                        Technical <span class="gradient-text">Skills</span>
+                    </h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full mx-auto mt-6"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                        <h3 class="text-xl font-black text-white mb-6 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-sky-500 rounded-xl flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                            </div>
+                            Backend Development
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">PHP</span>
+                                    <span class="text-sky-400 font-bold">Expert</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">Laravel (8, 9, 10, 11)</span>
+                                    <span class="text-sky-400 font-bold">Expert</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">MySQL</span>
+                                    <span class="text-sky-400 font-bold">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">RESTful APIs</span>
+                                    <span class="text-sky-400 font-bold">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                        <h3 class="text-xl font-black text-white mb-6 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                            </div>
+                            Frontend Development
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">JavaScript</span>
+                                    <span class="text-emerald-400 font-bold">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">HTML5 & CSS3</span>
+                                    <span class="text-emerald-400 font-bold">Expert</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">Bootstrap & Tailwind</span>
+                                    <span class="text-emerald-400 font-bold">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 87%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">jQuery & AJAX</span>
+                                    <span class="text-emerald-400 font-bold">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 83%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                        <h3 class="text-xl font-black text-white mb-6 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-purple-500 rounded-xl flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                            </div>
+                            Tools & DevOps
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">Git & GitLab</span>
+                                    <span class="text-purple-400 font-bold">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">Composer</span>
+                                    <span class="text-purple-400 font-bold">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">CI/CD Pipelines</span>
+                                    <span class="text-purple-400 font-bold">Intermediate</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">Linux Server Admin</span>
+                                    <span class="text-purple-400 font-bold">Intermediate</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6">
+                        <h3 class="text-xl font-black text-white mb-6 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                            </div>
+                            Specialized Knowledge
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">Koha ILS</span>
+                                    <span class="text-amber-400 font-bold">Expert</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">MARC21</span>
+                                    <span class="text-amber-400 font-bold">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">Library Systems</span>
+                                    <span class="text-amber-400 font-bold">Expert</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300 font-bold">Healthcare Systems</span>
+                                    <span class="text-amber-400 font-bold">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
         
         <!-- Contact Section -->
-        <section id="contact" class="py-20 px-4">
+        <section id="contact" class="py-20 px-4 bg-slate-900/30">
             <div class="max-w-2xl mx-auto">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl md:text-6xl font-black text-white mb-4">Let's Build Together</h2>
@@ -555,7 +844,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div class="text-center md:text-left">
                         <p class="text-slate-400 font-bold">&copy; 2025 Mahmood Mohamad. All rights reserved.</p>
-                        <p class="text-slate-600 text-sm">Built with Laravel & Modern Web Technologies</p>
+                        <p class="text-slate-600 text-sm">Senior Laravel Developer | 6+ Years Experience</p>
                     </div>
                     <div class="flex gap-4">
                         <a href="https://github.com/mahmoodmohamad" target="_blank" class="w-12 h-12 flex items-center justify-center bg-slate-800 rounded-xl text-slate-400 hover:text-white hover:bg-slate-700 transition-all" aria-label="GitHub">
@@ -572,165 +861,107 @@
             </div>
         </footer>
     </div>
-    
-    <!-- Theme Toggle Button -->
-    <button id="themeToggle" aria-label="Toggle theme">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-        </svg>
-    </button>
-    
+
     <script>
-    // Page Loader
-    window.addEventListener('load', function() {
-        const loader = document.getElementById('pageLoader');
-        loader.style.opacity = '0';
-        setTimeout(function() {
-            loader.style.display = 'none';
-        }, 500);
-    });
-    
-    // Project Filtering
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    filterBtns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            
-            // Update active button
-            filterBtns.forEach(function(b) {
-                b.classList.remove('active', 'bg-gradient-to-r', 'from-sky-500', 'to-emerald-500', 'text-white');
-                b.classList.add('bg-slate-800', 'border-2', 'border-slate-700', 'text-slate-400');
-            });
-            
-            this.classList.remove('bg-slate-800', 'border-2', 'border-slate-700', 'text-slate-400');
-            this.classList.add('active', 'bg-gradient-to-r', 'from-sky-500', 'to-emerald-500', 'text-white');
-            
-            // Filter projects
-            projectCards.forEach(function(card) {
-                const category = card.getAttribute('data-category');
-                
-                if (filter === 'all' || category === filter) {
-                    card.classList.remove('filter-hidden');
-                    card.style.animation = 'scaleIn 0.5s ease';
-                } else {
-                    card.classList.add('filter-hidden');
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
                 }
             });
         });
-    });
-    
-    // Contact Form
-    const contactForm = document.getElementById('contactForm');
-    const formStatus = document.getElementById('formStatus');
-    
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
         
-        const formData = {
-            name: document.getElementById('name').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            subject: document.getElementById('subject').value.trim(),
-            message: document.getElementById('message').value.trim()
-        };
-        
-        // Basic validation
-        if (!formData.name || !formData.email || !formData.message) {
-            showFormStatus('Please fill in all required fields.', 'error');
-            return;
-        }
-        
-        if (!isValidEmail(formData.email)) {
-            showFormStatus('Please enter a valid email address.', 'error');
-            return;
-        }
-        
-        // Disable submit button
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalHTML = submitBtn.innerHTML;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Sending...</span>';
-        
-        try {
-            // Simulate sending (replace with real API call)
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            // You can integrate with services like:
-            // - Formspree: https://formspree.io
-            // - EmailJS: https://www.emailjs.com
-            // - Your own Laravel API endpoint
-            
-            showFormStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
-            contactForm.reset();
-        } catch (error) {
-            showFormStatus('Something went wrong. Please try again later.', 'error');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalHTML;
-        }
-    });
-    
-    function showFormStatus(message, type) {
-        formStatus.textContent = message;
-        formStatus.classList.remove('hidden');
-        
-        if (type === 'success') {
-            formStatus.className = 'mt-6 p-4 rounded-xl border-2 bg-emerald-500/10 border-emerald-500 text-emerald-400 font-bold';
-        } else {
-            formStatus.className = 'mt-6 p-4 rounded-xl border-2 bg-rose-500/10 border-rose-500 text-rose-400 font-bold';
-        }
-        
-        setTimeout(function() {
-            formStatus.classList.add('hidden');
-        }, 5000);
-    }
-    
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-    
-    // Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        body.classList.add('light-mode');
-        updateThemeIcon(true);
-    }
-    
-    themeToggle.addEventListener('click', function() {
-        body.classList.toggle('light-mode');
-        const isLight = body.classList.contains('light-mode');
-        
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        updateThemeIcon(isLight);
-    });
-    
-    function updateThemeIcon(isLight) {
-        const icon = themeToggle.querySelector('svg');
-        if (isLight) {
-            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>';
-        } else {
-            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>';
-        }
-    }
-    
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-    });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        bar.style.width = bar.style.width;
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Show success message (in production, you would send this to a backend)
+            formStatus.classList.remove('hidden', 'border-red-500', 'bg-red-500/10', 'text-red-400');
+            formStatus.classList.add('border-emerald-500', 'bg-emerald-500/10', 'text-emerald-400');
+            formStatus.textContent = 'Thank you for your message! I\'ll get back to you soon.';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formStatus.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Add active state to nav links on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                const navLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+
+                if (navLink && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-slate-400');
+                    });
+                    navLink.classList.remove('text-slate-400');
+                    navLink.classList.add('text-white');
+                }
+            });
+        });
     </script>
 </body>
 </html>
