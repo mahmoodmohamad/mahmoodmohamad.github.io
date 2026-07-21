@@ -1,13 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahmoud Mohamad — Backend Developer (PHP/Laravel)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahmoud Mohamad — Backend Developer (PHP/Laravel)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#0b0d10;
+  --panel:#12151a;
+  --panel-2:#181c22;
+  --text:#e8e3d8;
+  --text-dim:#8b909a;
+  --accent:#d99a2b;
+  --accent-soft:#d99a2b1a;
+  --accent-2:#6b93ac;
+  --border:#262b33;
+  --danger:#c1666b;
+  --ok:#7fae7a;
+}
+*{box-sizing:border-box;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'IBM Plex Sans',sans-serif;
+  margin:0;
+}
+.mono{font-family:'IBM Plex Mono',monospace;}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  color:var(--accent);
+  font-size:0.78rem;
+  letter-spacing:0.03em;
+}
+.hairline{border:1px solid var(--border);}
+.panel{background:var(--panel); border:1px solid var(--border); border-radius:4px;}
+.panel-2{background:var(--panel-2); border:1px solid var(--border); border-radius:4px;}
+
+nav{background:rgba(11,13,16,0.9); backdrop-filter:blur(8px); border-bottom:1px solid var(--border);}
+.nav-link{font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--text-dim); transition:color .15s;}
+.nav-link:hover{color:var(--accent);}
+
+.cursor{
+  display:inline-block; width:9px; height:1.05em;
+  background:var(--accent); margin-left:2px; vertical-align:text-bottom;
+  animation:blink 1s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+.term-bar{display:flex; gap:6px; padding:10px 14px; border-bottom:1px solid var(--border); background:var(--panel-2); border-radius:4px 4px 0 0;}
+.term-dot{width:10px; height:10px; border-radius:50%;}
+
+.btn-term{
+  font-family:'IBM Plex Mono',monospace; font-size:0.9rem;
+  border:1px solid var(--border); color:var(--text);
+  padding:0.8rem 1.4rem; border-radius:4px; transition:all .15s;
+  background:var(--panel);
+}
+.btn-term:hover{border-color:var(--accent); color:var(--accent);}
+.btn-term.solid{background:var(--accent); color:#0b0d10; border-color:var(--accent); font-weight:600;}
+.btn-term.solid:hover{background:#ecb350;}
+
+.migration-item{border-left:2px solid var(--border); padding:0 0 2.5rem 1.75rem; position:relative;}
+.migration-item::before{
+  content:''; position:absolute; left:-6px; top:0.35rem;
+  width:10px; height:10px; background:var(--accent); border-radius:2px;
+}
+.migration-item:last-child{padding-bottom:0;}
+
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+  border:1px solid var(--border); color:var(--text-dim);
+  padding:0.2rem 0.6rem; border-radius:3px; display:inline-block;
+}
+
+.schema-table{width:100%; border-collapse:collapse;}
+.schema-table th{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; text-transform:uppercase;
+  letter-spacing:0.05em; color:var(--text-dim); text-align:left;
+  padding:0.6rem 0.75rem; border-bottom:1px solid var(--border);
+}
+.schema-table td{
+  padding:0.7rem 0.75rem; border-bottom:1px solid var(--border); font-size:0.92rem;
+}
+.schema-table tr:last-child td{border-bottom:none;}
+.level-badge{
+  font-family:'IBM Plex Mono',monospace; font-size:0.68rem; padding:0.15rem 0.5rem;
+  border-radius:3px; letter-spacing:0.03em;
+}
+.level-expert{background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent);}
+.level-advanced{background:#6b93ac1a; color:var(--accent-2); border:1px solid var(--accent-2);}
+.level-familiar{background:#8b909a1a; color:var(--text-dim); border:1px solid var(--border);}
+
+.file-tab{
+  font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--text-dim);
+  display:flex; align-items:center; gap:0.5rem; padding:0.7rem 1rem;
+  border-bottom:1px solid var(--border); background:var(--panel-2); border-radius:4px 4px 0 0;
+}
+.file-tab .dot{width:8px; height:8px; border-radius:50%;}
+
+input, textarea{
+  background:var(--panel-2); border:1px solid var(--border); color:var(--text);
+  font-family:'IBM Plex Sans',sans-serif;
+}
+input:focus, textarea:focus{outline:none; border-color:var(--accent);}
+label{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--text-dim);}
+
+.smooth-scroll{scroll-behavior:smooth;}
+</style>
 </head>
 <body class="smooth-scroll">
 
@@ -20,6 +122,7 @@
       <a href="#experience" class="nav-link">./experience</a>
       <a href="#projects" class="nav-link">./projects</a>
       <a href="#skills" class="nav-link">./skills</a>
+      <a href="#contact" class="nav-link">./contact</a>
     </div>
     <button id="mobileMenuBtn" class="md:hidden" style="color:var(--text)">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -63,18 +166,13 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-3 gap-3 mt-6">
-      <div class="panel p-4 mono text-xs md:text-sm">
-        <div style="color:var(--text-dim)">YEARS_LARAVEL</div>
-        <div class="text-2xl md:text-3xl font-semibold mt-1" style="color:var(--accent)">8+</div>
-      </div>
-      <div class="panel p-4 mono text-xs md:text-sm">
-        <div style="color:var(--text-dim)">YEARS_IN_IT</div>
-        <div class="text-2xl md:text-3xl font-semibold mt-1" style="color:var(--accent)">17+</div>
-      </div>
-      <div class="panel p-4 mono text-xs md:text-sm">
-        <div style="color:var(--text-dim)">DOMAINS</div>
-        <div class="text-2xl md:text-3xl font-semibold mt-1" style="color:var(--accent)">3</div>
+    <div class="panel p-4 mt-6">
+      <div class="mono text-xs mb-2" style="color:var(--text-dim)">FOCUS_AREAS</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag">Backend Systems</span>
+        <span class="tag">API Integrations</span>
+        <span class="tag">Workflow Design</span>
+        <span class="tag">Library &amp; Healthcare Platforms</span>
       </div>
     </div>
 
@@ -84,7 +182,7 @@
     </div>
 
     <div class="flex gap-3 mt-6">
-      <a href="https://github.com/mahmoodmohamad" target="_blank" class="panel w-11 h-11 flex items-center justify-center" style="color:var(--text-dim)" aria-label="GitHub">
+      <a href="https://github.com/Mahmoudmohamad" target="_blank" class="panel w-11 h-11 flex items-center justify-center" style="color:var(--text-dim)" aria-label="GitHub">
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
       </a>
       <a href="https://linkedin.com/in/mahmoudmehidy" target="_blank" class="panel w-11 h-11 flex items-center justify-center" style="color:var(--text-dim)" aria-label="LinkedIn">
@@ -416,7 +514,29 @@
   </div>
 </section>
 
+<!-- Contact -->
+<section id="contact" class="px-4 py-16" style="background:var(--panel-2)">
+  <div class="max-w-2xl mx-auto">
+    <div class="eyebrow mb-3">$ ./contact --new</div>
+    <h2 class="text-3xl md:text-4xl font-semibold mb-2" style="color:var(--text)">Let's Build Together</h2>
+    <p class="mb-8" style="color:var(--text-dim)">Ready to start your project? Get in touch.</p>
 
+    <div class="grid md:grid-cols-3 gap-4 text-center">
+      <div class="panel p-4">
+        <div class="mono text-xs mb-1" style="color:var(--text-dim)">email</div>
+        <a href="mailto:mamod.mohamed@gmail.com" class="text-sm" style="color:var(--text)">mamod.mohamed@gmail.com</a>
+      </div>
+      <div class="panel p-4">
+        <div class="mono text-xs mb-1" style="color:var(--text-dim)">linkedin</div>
+        <a href="https://linkedin.com/in/mahmoudmehidy" target="_blank" class="text-sm" style="color:var(--text)">@mahmoudmehidy</a>
+      </div>
+      <div class="panel p-4">
+        <div class="mono text-xs mb-1" style="color:var(--text-dim)">github</div>
+        <a href="https://github.com/Mahmoudmohamad" target="_blank" class="text-sm" style="color:var(--text)">@Mahmoudmohamad</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Footer -->
 <footer class="px-4 py-8" style="border-top:1px solid var(--border)">
@@ -445,16 +565,6 @@ document.getElementById('mobileMenuBtn').addEventListener('click', () => {
 });
 document.querySelectorAll('.mobile-menu-link').forEach(link => {
   link.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'));
-});
-
-const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  formStatus.classList.remove('hidden');
-  formStatus.textContent = "$ message sent — I'll get back to you soon.";
-  contactForm.reset();
-  setTimeout(() => formStatus.classList.add('hidden'), 5000);
 });
 
 const typedEl = document.getElementById('typed');
