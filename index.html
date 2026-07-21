@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahmoud Mohamad — Backend Developer (PHP/Laravel)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#0b0d10;
+  --panel:#12151a;
+  --panel-2:#181c22;
+  --text:#e8e3d8;
+  --text-dim:#8b909a;
+  --accent:#d99a2b;
+  --accent-soft:#d99a2b1a;
+  --accent-2:#6b93ac;
+  --border:#262b33;
+  --danger:#c1666b;
+  --ok:#7fae7a;
+}
+*{box-sizing:border-box;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'IBM Plex Sans',sans-serif;
+  margin:0;
+}
+.mono{font-family:'IBM Plex Mono',monospace;}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  color:var(--accent);
+  font-size:0.78rem;
+  letter-spacing:0.03em;
+}
+.hairline{border:1px solid var(--border);}
+.panel{background:var(--panel); border:1px solid var(--border); border-radius:4px;}
+.panel-2{background:var(--panel-2); border:1px solid var(--border); border-radius:4px;}
+
+nav{background:rgba(11,13,16,0.9); backdrop-filter:blur(8px); border-bottom:1px solid var(--border);}
+.nav-link{font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--text-dim); transition:color .15s;}
+.nav-link:hover{color:var(--accent);}
+
+.cursor{
+  display:inline-block; width:9px; height:1.05em;
+  background:var(--accent); margin-left:2px; vertical-align:text-bottom;
+  animation:blink 1s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+.term-bar{display:flex; gap:6px; padding:10px 14px; border-bottom:1px solid var(--border); background:var(--panel-2); border-radius:4px 4px 0 0;}
+.term-dot{width:10px; height:10px; border-radius:50%;}
+
+.btn-term{
+  font-family:'IBM Plex Mono',monospace; font-size:0.9rem;
+  border:1px solid var(--border); color:var(--text);
+  padding:0.8rem 1.4rem; border-radius:4px; transition:all .15s;
+  background:var(--panel);
+}
+.btn-term:hover{border-color:var(--accent); color:var(--accent);}
+.btn-term.solid{background:var(--accent); color:#0b0d10; border-color:var(--accent); font-weight:600;}
+.btn-term.solid:hover{background:#ecb350;}
+
+.migration-item{border-left:2px solid var(--border); padding:0 0 2.5rem 1.75rem; position:relative;}
+.migration-item::before{
+  content:''; position:absolute; left:-6px; top:0.35rem;
+  width:10px; height:10px; background:var(--accent); border-radius:2px;
+}
+.migration-item:last-child{padding-bottom:0;}
+
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+  border:1px solid var(--border); color:var(--text-dim);
+  padding:0.2rem 0.6rem; border-radius:3px; display:inline-block;
+}
+
+.schema-table{width:100%; border-collapse:collapse;}
+.schema-table th{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; text-transform:uppercase;
+  letter-spacing:0.05em; color:var(--text-dim); text-align:left;
+  padding:0.6rem 0.75rem; border-bottom:1px solid var(--border);
+}
+.schema-table td{
+  padding:0.7rem 0.75rem; border-bottom:1px solid var(--border); font-size:0.92rem;
+}
+.schema-table tr:last-child td{border-bottom:none;}
+.level-badge{
+  font-family:'IBM Plex Mono',monospace; font-size:0.68rem; padding:0.15rem 0.5rem;
+  border-radius:3px; letter-spacing:0.03em;
+}
+.level-expert{background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent);}
+.level-advanced{background:#6b93ac1a; color:var(--accent-2); border:1px solid var(--accent-2);}
+.level-familiar{background:#8b909a1a; color:var(--text-dim); border:1px solid var(--border);}
+
+.file-tab{
+  font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--text-dim);
+  display:flex; align-items:center; gap:0.5rem; padding:0.7rem 1rem;
+  border-bottom:1px solid var(--border); background:var(--panel-2); border-radius:4px 4px 0 0;
+}
+.file-tab .dot{width:8px; height:8px; border-radius:50%;}
+
+input, textarea{
+  background:var(--panel-2); border:1px solid var(--border); color:var(--text);
+  font-family:'IBM Plex Sans',sans-serif;
+}
+input:focus, textarea:focus{outline:none; border-color:var(--accent);}
+label{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--text-dim);}
+
+.smooth-scroll{scroll-behavior:smooth;}
+</style>
+</head>
+<body class="smooth-scroll">
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="#home" class="mono font-semibold" style="color:var(--text)">mahmoud<span style="color:var(--accent)">@</span>backend<span style="color:var(--text-dim)">:~$</span></a>
+    <div class="hidden md:flex gap-6">
+      <a href="#about" class="nav-link">./about</a>
+      <a href="#experience" class="nav-link">./experience</a>
+      <a href="#projects" class="nav-link">./projects</a>
+      <a href="#skills" class="nav-link">./skills</a>
+      <a href="#contact" class="nav-link">./contact</a>
+    </div>
+    <button id="mobileMenuBtn" class="md:hidden" style="color:var(--text)">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="fixed inset-0 z-40 hidden" style="background:var(--bg)">
+  <div class="flex flex-col items-center justify-center h-full gap-8">
+    <a href="#about" class="mono text-xl mobile-menu-link" style="color:var(--text)">./about</a>
+    <a href="#experience" class="mono text-xl mobile-menu-link" style="color:var(--text)">./experience</a>
+    <a href="#projects" class="mono text-xl mobile-menu-link" style="color:var(--text)">./projects</a>
+    <a href="#skills" class="mono text-xl mobile-menu-link" style="color:var(--text)">./skills</a>
+    <a href="#contact" class="mono text-xl mobile-menu-link" style="color:var(--text)">./contact</a>
+  </div>
+</div>
+
+<div class="pt-24">
+
+<!-- Hero -->
+<section id="home" class="px-4 pb-20">
+  <div class="max-w-3xl mx-auto">
+    <div class="panel overflow-hidden">
+      <div class="term-bar">
+        <div class="term-dot" style="background:#e0605a"></div>
+        <div class="term-dot" style="background:#e0b054"></div>
+        <div class="term-dot" style="background:#6bab6b"></div>
+        <span class="mono ml-3" style="color:var(--text-dim); font-size:0.78rem;">session — mahmoud@backend</span>
+      </div>
+      <div class="p-6 md:p-8 mono text-sm md:text-base leading-relaxed" style="color:var(--text-dim)">
+        <p><span style="color:var(--ok)">$</span> whoami</p>
+        <p class="mb-4" style="color:var(--text)" >Mahmoud Mohamad</p>
+        <p><span style="color:var(--ok)">$</span> role --current</p>
+        <p class="mb-4" style="color:var(--accent)">Backend Developer — PHP / Laravel</p>
+        <p><span style="color:var(--ok)">$</span> cat summary.txt</p>
+        <p style="color:var(--text)">
+          Building business systems, API integrations, and workflow-driven backend<br class="hidden md:block">
+          applications across healthcare, library, and distribution systems.
+        </p>
+        <p class="mt-2"><span style="color:var(--ok)">$</span> <span id="typed"></span><span class="cursor"></span></p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mt-6">
+      <div class="panel p-4 mono text-xs md:text-sm">
+        <div style="color:var(--text-dim)">YEARS_LARAVEL</div>
+        <div class="text-2xl md:text-3xl font-semibold mt-1" style="color:var(--accent)">8+</div>
+      </div>
+      <div class="panel p-4 mono text-xs md:text-sm">
+        <div style="color:var(--text-dim)">YEARS_IN_IT</div>
+        <div class="text-2xl md:text-3xl font-semibold mt-1" style="color:var(--accent)">17+</div>
+      </div>
+      <div class="panel p-4 mono text-xs md:text-sm">
+        <div style="color:var(--text-dim)">DOMAINS</div>
+        <div class="text-2xl md:text-3xl font-semibold mt-1" style="color:var(--accent)">3</div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-3 mt-6">
+      <a href="#projects" class="btn-term solid text-center">./view-projects</a>
+      <a href="#contact" class="btn-term text-center">./contact --new</a>
+    </div>
+
+    <div class="flex gap-3 mt-6">
+      <a href="https://github.com/mahmoodmohamad" target="_blank" class="panel w-11 h-11 flex items-center justify-center" style="color:var(--text-dim)" aria-label="GitHub">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/mahmoudmehidy" target="_blank" class="panel w-11 h-11 flex items-center justify-center" style="color:var(--text-dim)" aria-label="LinkedIn">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="mailto:mamod.mohamed@gmail.com" class="panel w-11 h-11 flex items-center justify-center" style="color:var(--text-dim)" aria-label="Email">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="px-4 py-16" style="background:var(--panel-2)">
+  <div class="max-w-5xl mx-auto">
+    <div class="eyebrow mb-3">$ cat about.md</div>
+    <h2 class="text-3xl md:text-4xl font-semibold mb-10" style="color:var(--text)">About Me</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="panel p-6 md:p-8">
+        <p class="mb-4 leading-relaxed" style="color:var(--text-dim)">
+          My career started in technical support, deploying and supporting the Koha open-source
+          library system across academic library branches in Riyadh — work that gave me a
+          close, ground-level understanding of how library systems actually get used.
+        </p>
+        <p class="mb-4 leading-relaxed" style="color:var(--text-dim)">
+          That grew into building internal business applications, migrating legacy CRMs to
+          Epesi and Vtiger, and eventually into full backend development. Today, at Progress-IT,
+          I build institutional systems from the ground up: a library portal integrated with Koha
+          over REST and SRU APIs, a clinic management system covering registration through billing
+          and diagnostics, and a B2B pharmacy distribution platform with geo-based warehouse and
+          supplier logic.
+        </p>
+        <p class="leading-relaxed" style="color:var(--text-dim)">
+          I care about backend logic being correct as much as it is fast — things like using
+          integer-based financial calculations to remove rounding inconsistencies in pricing, or
+          preserving discount ratios correctly when order quantities change.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="panel p-5">
+          <div class="mono text-sm mb-2" style="color:var(--accent)">function calculatePricing(): int</div>
+          <p class="text-sm" style="color:var(--text-dim)">Integer-based financial logic to eliminate rounding inconsistencies in pricing and discounts across pharmacy and library systems.</p>
+        </div>
+        <div class="panel p-5">
+          <div class="mono text-sm mb-2" style="color:var(--accent)">function verifyOtp(token): bool</div>
+          <p class="text-sm" style="color:var(--text-dim)">Paymob payment gateway integration with token-based auth and OTP verification across multiple projects.</p>
+        </div>
+        <div class="panel p-5">
+          <div class="mono text-sm mb-2" style="color:var(--accent)">function migrateCrm(legacy): Crm</div>
+          <p class="text-sm" style="color:var(--text-dim)">Led data migration and process restructuring from legacy systems to Epesi and Vtiger CRMs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="px-4 py-16">
+  <div class="max-w-4xl mx-auto">
+    <div class="eyebrow mb-3">$ ls -la migrations/</div>
+    <h2 class="text-3xl md:text-4xl font-semibold mb-10" style="color:var(--text)">Professional Experience</h2>
+
+    <div>
+      <div class="migration-item">
+        <div class="mono text-xs mb-2" style="color:var(--text-dim)">2022_03_01_000000_join_progress_it.php</div>
+        <div class="panel p-6">
+          <div class="flex flex-wrap justify-between items-start mb-3 gap-2">
+            <div>
+              <h3 class="text-lg font-semibold" style="color:var(--text)">Backend Developer (PHP/Laravel)</h3>
+              <div class="mono text-sm" style="color:var(--accent)">Progress-IT</div>
+            </div>
+            <span class="tag">Mar 2022 — Present</span>
+          </div>
+          <ul class="space-y-2 text-sm" style="color:var(--text-dim)">
+            <li>▸ Built an institutional library portal integrated with Koha ILS via REST and SRU APIs — catalog search, circulation workflows, and member management for a government client</li>
+            <li>▸ Designed and built a clinic management system from scratch, covering patient registration, appointments, billing, lab, and diagnostic operations</li>
+            <li>▸ Built a B2B pharmacy distribution platform with geo-based warehouse coverage logic, supplier policy enforcement, and order validation rules</li>
+            <li>▸ Implemented integer-based financial calculations to eliminate rounding inconsistencies in pricing and discounts</li>
+            <li>▸ Integrated Paymob payment gateway and token-based authentication with OTP verification across multiple projects</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="migration-item">
+        <div class="mono text-xs mb-2" style="color:var(--text-dim)">2017_08_01_000000_join_almandumah_dev.php</div>
+        <div class="panel p-6">
+          <div class="flex flex-wrap justify-between items-start mb-3 gap-2">
+            <div>
+              <h3 class="text-lg font-semibold" style="color:var(--text)">PHP Web Developer</h3>
+              <div class="mono text-sm" style="color:var(--accent-2)">Almandumah, Riyadh</div>
+            </div>
+            <span class="tag">Aug 2017 — May 2021</span>
+          </div>
+          <ul class="space-y-2 text-sm" style="color:var(--text-dim)">
+            <li>▸ Developed and maintained internal business applications using PHP and Laravel to modernize administrative and library workflows</li>
+            <li>▸ Participated in CRM migrations from legacy systems to Epesi and Vtiger, including data migration and process restructuring</li>
+            <li>▸ Built internal tools that automated repetitive administrative operations and reduced manual workload</li>
+            <li>▸ Worked closely with non-technical teams to convert operational requirements into working software</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="migration-item">
+        <div class="mono text-xs mb-2" style="color:var(--text-dim)">2009_07_01_000000_join_almandumah_support.php</div>
+        <div class="panel p-6">
+          <div class="flex flex-wrap justify-between items-start mb-3 gap-2">
+            <div>
+              <h3 class="text-lg font-semibold" style="color:var(--text)">Technical Support (Koha ILS)</h3>
+              <div class="mono text-sm" style="color:var(--accent-2)">Almandumah, Riyadh</div>
+            </div>
+            <span class="tag">Jul 2009 — Aug 2017</span>
+          </div>
+          <ul class="space-y-2 text-sm" style="color:var(--text-dim)">
+            <li>▸ Deployed, configured, and supported Koha ILS across multiple academic library branches</li>
+            <li>▸ Built a PHP utility to audit library records and detect missing or duplicate entries</li>
+            <li>▸ Delivered user training on system workflows and daily operations</li>
+            <li>▸ Served as the technical bridge between library teams and the development department</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="migration-item">
+        <div class="mono text-xs mb-2" style="color:var(--text-dim)">2008_04_01_000000_join_sama_support.php</div>
+        <div class="panel p-6">
+          <div class="flex flex-wrap justify-between items-start mb-3 gap-2">
+            <div>
+              <h3 class="text-lg font-semibold" style="color:var(--text)">Technical Support</h3>
+              <div class="mono text-sm" style="color:var(--text-dim)">Sama Advanced Technologies, Cairo</div>
+            </div>
+            <span class="tag">Apr 2008 — Jun 2009</span>
+          </div>
+          <ul class="space-y-2 text-sm" style="color:var(--text-dim)">
+            <li>▸ Provided technical support, software installation, troubleshooting, and client system maintenance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="px-4 py-16" style="background:var(--panel-2)">
+  <div class="max-w-6xl mx-auto">
+    <div class="eyebrow mb-3">$ ls projects/</div>
+    <h2 class="text-3xl md:text-4xl font-semibold mb-2" style="color:var(--text)">Featured Projects</h2>
+    <p class="mb-10" style="color:var(--text-dim)">Real-world systems from my professional experience</p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <article class="panel overflow-hidden">
+        <div class="file-tab"><span class="dot" style="background:#e0605a"></span><span class="dot" style="background:#e0b054"></span><span class="dot" style="background:#6bab6b"></span><span class="ml-2">koha_portal.php</span></div>
+        <div class="p-6">
+          <h3 class="font-semibold mb-1" style="color:var(--text)">Koha Library Portal</h3>
+          <div class="mono text-xs mb-3" style="color:var(--accent)">Progress-IT</div>
+          <p class="text-sm mb-4" style="color:var(--text-dim)">Institutional library portal for a government client, integrated with Koha ILS through REST and SRU APIs for real-time catalog search, metadata retrieval, and external book-cover rendering.</p>
+          <ul class="space-y-1 text-sm mb-4" style="color:var(--text-dim)">
+            <li>• OTP auth &amp; role-based access control</li>
+            <li>• Ticketing, favorites &amp; ratings</li>
+            <li>• Circulation &amp; member management</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Laravel</span><span class="tag">Koha REST/SRU</span><span class="tag">MySQL</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel overflow-hidden">
+        <div class="file-tab"><span class="dot" style="background:#e0605a"></span><span class="dot" style="background:#e0b054"></span><span class="dot" style="background:#6bab6b"></span><span class="ml-2">clinic_system.php</span></div>
+        <div class="p-6">
+          <h3 class="font-semibold mb-1" style="color:var(--text)">Clinic Management System</h3>
+          <div class="mono text-xs mb-3" style="color:var(--accent)">Progress-IT</div>
+          <p class="text-sm mb-4" style="color:var(--text-dim)">Designed and built from scratch, translating real-world clinic workflows into backend logic covering patient registration, appointments, billing, lab, and diagnostic operations.</p>
+          <ul class="space-y-1 text-sm mb-4" style="color:var(--text-dim)">
+            <li>• Registration &amp; appointment scheduling</li>
+            <li>• Billing, lab &amp; diagnostic modules</li>
+            <li>• End-to-end clinic workflow logic</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">PHP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel overflow-hidden">
+        <div class="file-tab"><span class="dot" style="background:#e0605a"></span><span class="dot" style="background:#e0b054"></span><span class="dot" style="background:#6bab6b"></span><span class="ml-2">pharmacy_platform.php</span></div>
+        <div class="p-6">
+          <h3 class="font-semibold mb-1" style="color:var(--text)">B2B Pharmacy Distribution Platform</h3>
+          <div class="mono text-xs mb-3" style="color:var(--accent)">Progress-IT</div>
+          <p class="text-sm mb-4" style="color:var(--text-dim)">Distribution platform with geo-based warehouse coverage logic, supplier policy enforcement, and order validation rules for B2B pharmacy operations.</p>
+          <ul class="space-y-1 text-sm mb-4" style="color:var(--text-dim)">
+            <li>• Geo-based warehouse coverage logic</li>
+            <li>• Supplier policy enforcement</li>
+            <li>• Integer-based pricing, no rounding drift</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Laravel</span><span class="tag">Paymob</span><span class="tag">MySQL</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel overflow-hidden">
+        <div class="file-tab"><span class="dot" style="background:#e0605a"></span><span class="dot" style="background:#e0b054"></span><span class="dot" style="background:#6bab6b"></span><span class="ml-2">library_acquisition.php</span></div>
+        <div class="p-6">
+          <h3 class="font-semibold mb-1" style="color:var(--text)">Library Acquisition &amp; Inventory System</h3>
+          <div class="mono text-xs mb-3" style="color:var(--accent)">Progress-IT</div>
+          <p class="text-sm mb-4" style="color:var(--text-dim)">Full acquisition workflow for institutional libraries covering vendor selection, budget allocation, purchasing, inventory storage, and shelf-level tracking.</p>
+          <ul class="space-y-1 text-sm mb-4" style="color:var(--text-dim)">
+            <li>• Vendor, budget &amp; purchasing workflow</li>
+            <li>• Recalculation preserving discount ratios</li>
+            <li>• Audit logging on transactional models</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Eloquent ORM</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel overflow-hidden">
+        <div class="file-tab"><span class="dot" style="background:#e0605a"></span><span class="dot" style="background:#e0b054"></span><span class="dot" style="background:#6bab6b"></span><span class="ml-2">crm_migration.php</span></div>
+        <div class="p-6">
+          <h3 class="font-semibold mb-1" style="color:var(--text)">CRM Migration &amp; Restructuring</h3>
+          <div class="mono text-xs mb-3" style="color:var(--accent-2)">Almandumah</div>
+          <p class="text-sm mb-4" style="color:var(--text-dim)">Migrated internal operations off legacy systems onto Epesi and Vtiger CRMs, including data migration and business process restructuring.</p>
+          <ul class="space-y-1 text-sm mb-4" style="color:var(--text-dim)">
+            <li>• Legacy-to-CRM data migration</li>
+            <li>• Business process restructuring</li>
+            <li>• Internal automation tooling</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Epesi</span><span class="tag">Vtiger</span><span class="tag">PHP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel overflow-hidden">
+        <div class="file-tab"><span class="dot" style="background:#e0605a"></span><span class="dot" style="background:#e0b054"></span><span class="dot" style="background:#6bab6b"></span><span class="ml-2">elearning_2005.php</span></div>
+        <div class="p-6">
+          <h3 class="font-semibold mb-1" style="color:var(--text)">E-Learning Platform</h3>
+          <div class="mono text-xs mb-3" style="color:var(--text-dim)">Graduation Project, 2005</div>
+          <p class="text-sm mb-4" style="color:var(--text-dim)">Graduation project at Mansoura University focused on delivering educational content and managing online courses efficiently — the foundation of my development career.</p>
+          <ul class="space-y-1 text-sm mb-4" style="color:var(--text-dim)">
+            <li>• Course management</li>
+            <li>• Student progress tracking</li>
+            <li>• Educational content delivery</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">PHP</span><span class="tag">MySQL</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="px-4 py-16">
+  <div class="max-w-5xl mx-auto">
+    <div class="eyebrow mb-3">$ describe table skills;</div>
+    <h2 class="text-3xl md:text-4xl font-semibold mb-10" style="color:var(--text)">Technical Skills</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="panel p-2">
+        <div class="px-4 pt-3 pb-1 mono text-xs" style="color:var(--text-dim)">-- backend_development</div>
+        <table class="schema-table">
+          <thead><tr><th>Skill</th><th>Level</th></tr></thead>
+          <tbody>
+            <tr class="schema-row"><td>PHP</td><td><span class="level-badge level-expert">EXPERT</span></td></tr>
+            <tr class="schema-row"><td>Laravel</td><td><span class="level-badge level-expert">EXPERT</span></td></tr>
+            <tr class="schema-row"><td>REST APIs / MVC</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+            <tr class="schema-row"><td>Auth &amp; Authorization</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+            <tr class="schema-row"><td>Business Logic Design</td><td><span class="level-badge level-expert">EXPERT</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel p-2">
+        <div class="px-4 pt-3 pb-1 mono text-xs" style="color:var(--text-dim)">-- database_and_data_modeling</div>
+        <table class="schema-table">
+          <thead><tr><th>Skill</th><th>Level</th></tr></thead>
+          <tbody>
+            <tr class="schema-row"><td>MySQL / Schema Design</td><td><span class="level-badge level-expert">EXPERT</span></td></tr>
+            <tr class="schema-row"><td>Eloquent ORM</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+            <tr class="schema-row"><td>Query Optimization / Indexing</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+            <tr class="schema-row"><td>Transactions &amp; Integrity</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel p-2">
+        <div class="px-4 pt-3 pb-1 mono text-xs" style="color:var(--text-dim)">-- integration_and_apis</div>
+        <table class="schema-table">
+          <thead><tr><th>Skill</th><th>Level</th></tr></thead>
+          <tbody>
+            <tr class="schema-row"><td>Third-Party API Integration</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+            <tr class="schema-row"><td>Payment Gateways (Paymob)</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+            <tr class="schema-row"><td>OTP Authentication</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+            <tr class="schema-row"><td>SRU / REST Integration</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel p-2">
+        <div class="px-4 pt-3 pb-1 mono text-xs" style="color:var(--text-dim)">-- tools_and_architecture</div>
+        <table class="schema-table">
+          <thead><tr><th>Skill</th><th>Level</th></tr></thead>
+          <tbody>
+            <tr class="schema-row"><td>Git &amp; Linux</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+            <tr class="schema-row"><td>Postman</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+            <tr class="schema-row"><td>Docker &amp; Redis</td><td><span class="level-badge level-familiar">FAMILIAR</span></td></tr>
+            <tr class="schema-row"><td>Workflow &amp; RBAC Design</td><td><span class="level-badge level-advanced">ADVANCED</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel p-6 mt-6">
+      <div class="mono text-xs mb-3" style="color:var(--text-dim)">-- domain_expertise</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag">Library Systems &amp; Koha ILS</span>
+        <span class="tag">Clinic Management Systems</span>
+        <span class="tag">Distribution Platforms</span>
+        <span class="tag">CRM Migration</span>
+        <span class="tag">MARC21</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="px-4 py-16" style="background:var(--panel-2)">
+  <div class="max-w-2xl mx-auto">
+    <div class="eyebrow mb-3">$ ./contact --new</div>
+    <h2 class="text-3xl md:text-4xl font-semibold mb-2" style="color:var(--text)">Let's Build Together</h2>
+    <p class="mb-8" style="color:var(--text-dim)">Ready to start your project? Get in touch.</p>
+
+    <form id="contactForm" class="panel p-6 md:p-8 space-y-5">
+      <div class="grid md:grid-cols-2 gap-5">
+        <div>
+          <label for="name">name *</label>
+          <input type="text" id="name" required class="w-full px-4 py-3 rounded mt-1" placeholder="Your name">
+        </div>
+        <div>
+          <label for="email">email *</label>
+          <input type="email" id="email" required class="w-full px-4 py-3 rounded mt-1" placeholder="your.email@example.com">
+        </div>
+      </div>
+      <div>
+        <label for="subject">subject</label>
+        <input type="text" id="subject" class="w-full px-4 py-3 rounded mt-1" placeholder="Project inquiry">
+      </div>
+      <div>
+        <label for="message">message *</label>
+        <textarea id="message" rows="6" required class="w-full px-4 py-3 rounded mt-1 resize-vertical" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button type="submit" class="btn-term solid w-full">./send-message</button>
+    </form>
+
+    <div id="formStatus" class="hidden mt-4 p-4 rounded panel mono text-sm" style="color:var(--ok)"></div>
+
+    <div class="grid md:grid-cols-3 gap-4 mt-10 text-center">
+      <div class="panel p-4">
+        <div class="mono text-xs mb-1" style="color:var(--text-dim)">email</div>
+        <a href="mailto:mamod.mohamed@gmail.com" class="text-sm" style="color:var(--text)">mamod.mohamed@gmail.com</a>
+      </div>
+      <div class="panel p-4">
+        <div class="mono text-xs mb-1" style="color:var(--text-dim)">linkedin</div>
+        <a href="https://linkedin.com/in/mahmoudmehidy" target="_blank" class="text-sm" style="color:var(--text)">@mahmoudmehidy</a>
+      </div>
+      <div class="panel p-4">
+        <div class="mono text-xs mb-1" style="color:var(--text-dim)">github</div>
+        <a href="https://github.com/mahmoodmohamad" target="_blank" class="text-sm" style="color:var(--text)">@mahmoodmohamad</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="px-4 py-8" style="border-top:1px solid var(--border)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3 mono text-xs" style="color:var(--text-dim)">
+    <div>[log] Mahmoud Mohamad — Backend Developer (PHP/Laravel) — building since 2009</div>
+    <div>&copy; 2026</div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('mobileMenu').classList.add('hidden');
+    }
+  });
+});
+
+document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('hidden');
+});
+document.querySelectorAll('.mobile-menu-link').forEach(link => {
+  link.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'));
+});
+
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  formStatus.classList.remove('hidden');
+  formStatus.textContent = "$ message sent — I'll get back to you soon.";
+  contactForm.reset();
+  setTimeout(() => formStatus.classList.add('hidden'), 5000);
+});
+
+const typedEl = document.getElementById('typed');
+const phrase = "echo 'available for freelance work'";
+let i = 0;
+function type(){
+  if(i <= phrase.length){
+    typedEl.textContent = phrase.slice(0, i);
+    i++;
+    setTimeout(type, 35);
+  }
+}
+type();
+</script>
+</body>
+</html>
